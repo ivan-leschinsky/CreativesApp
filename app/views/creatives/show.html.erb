@@ -1,41 +1,50 @@
 <div class="row">
-<fieldset>
-<legend align="center"><h2><%= @creative.name %></h2></legend>
-<h5>Теги:
-  <span class="label radius">Программирование</span>
-  <span class="success label radius">Еще что-то</span>
-  <span class="alert label radius">И еще...</span>
-</h5>
+  <fieldset>
+    <legend align="center">
+      <h2>
+        <%= @creative.name %>
+      </h2>
+    </legend>
+    <h5>Теги:
+      <span class="label radius">Программирование</span>
+      <span class="success label radius">Еще что-то</span>
+      <span class="alert label radius">И еще...</span>
+    </h5>
 
-<p>
-  <%= @creative.description %>
-  </p>
+    <p>
+      <%= @creative.description %>
+    </p>
 
-<!--
-<a class="th radius" href="#">
-  <span class="alert label">Тут картинка будет</span>
-</a>
--->
-<%= link_to t('add_section'), new_creative_section_path(@creative), :class => "small button primary"  %>
-  <% @creative.sections.each do |section| %>
-      <fieldset>
-        <legend align="center"><h3><%= section.name %> (порядок: <%= section.number %>)</h3></legend>
-        <p><%= section.body.html_safe %></p>
-        <ul class="button-group radius right">
-          <li><%= link_to 'Show', creative_section_path(@creative, section), :class => "tiny button success" %></li>
-          <li><%= link_to 'Edit', edit_creative_section_path(@creative, section), :class => "tiny button" %></li>
-          <li><%= link_to 'Destroy', creative_section_path(@creative, section), method: :delete, data: { confirm: t('are_you_sure') }, :class => "tiny button alert" %></li>
-        </ul>
-      </fieldset>
-        
-     		
+    <!--
+    <a class="th radius" href="#">
+      <span class="alert label">Тут картинка будет</span>
+    </a>
+    -->
+    <%= link_to t('add_section'), new_creative_section_path(@creative), :class => "small button primary"  %>
+      <% @creative.sections.each do |section| %>
+          <fieldset>
+            <legend align="center"><h3><%= section.name %> (порядок: <%= section.number %>)</h3></legend>
+            <p><%= section.body.html_safe %></p>
+            
+            <% if current_user.id == @creative.user_id %>
+              <ul class="button-group radius right">
+                <li><%= link_to 'Edit', edit_creative_section_path(@creative, section), :class => "tiny button" %></li>
+                <li><%= link_to 'Destroy', creative_section_path(@creative, section), method: :delete, data: { confirm: t('are_you_sure') }, :class => "tiny button alert" %></li>
+              </ul>
+            <% end %>
+
+          </fieldset>
+            
+         		
+          
+
+        <% end %>
       
-
-    <% end %>
-  
-<br>
-  
-</fieldset>
-<%= link_to 'Вернуться', creatives_path, :class => "small button secondary" %>
-<%= link_to 'Редактировать креатив', edit_creative_path(@creative), :class => "small button alert"  %>
+    <br>
+      
+  </fieldset>
+  <%= link_to 'Вернуться', creatives_path, :class => "small button secondary" %>
+  <% if current_user.id == @creative.user_id %>
+    <%= link_to 'Редактировать креатив', edit_creative_path(@creative), :class => "small button alert"  %>
+  <% end %>
 </div>

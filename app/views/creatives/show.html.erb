@@ -1,50 +1,44 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @creative.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
+<div class="row">
+<fieldset>
+<legend align="center"><h2><%= @creative.name %></h2></legend>
+<h5>Теги:
+  <span class="label radius">Программирование</span>
+  <span class="secondary label radius">Спорт</span>
+  <span class="success label radius">Еще что-то</span>
+  <span class="alert label round">И еще...</span>
+</h5>
+<h3>
+  <strong>Краткое описание:</strong>
   <%= @creative.description %>
-</p>
+</h3>
 
-<h1>Главы <%= @creative.name %></h1>
+<a class="th radius" href="#">
+  <span class="alert label">Тут картинка будет</span>
+</a>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Number</th>
-      <th>Body</th>
-      <th>Creative</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+  <% @creative.sections.each do |section| %>
+      <fieldset>
+        <legend align="center"><h3><%= section.name %> (порядок: <%= section.number %>)</h3></legend>
+        <%= section.body %>
+        <ul class="button-group radius">
+          <li><%= link_to 'Show', creative_section_path(@creative, section), :class => "tiny button success" %></li>
+          <li><%= link_to 'Edit', edit_creative_section_path(@creative, section), :class => "tiny button" %></li>
+          <li><%= link_to 'Destroy', creative_section_path(@creative, section), method: :delete, data: { confirm: t('are_you_sure') }, :class => "tiny button alert" %></li>
+        </ul>
+      </fieldset>
+        
+     		
+      
 
-  <tbody>
-    <% @creative.sections.each do |section| %>
-      <tr>
-        <td><%= section.name %></td>
-        <td><%= section.number %></td>
-        <td><%= section.body %></td>
-        <td><%= section.creative_id %></td>
-        <td><%= link_to 'Show', section %></td>
-        <td><%= link_to 'Edit', edit_creative_section_path(section) %></td>
-        <td><%= link_to 'Destroy', section, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
     <% end %>
-  </tbody>
-</table>
-
+  
 <br>
 
-<%= link_to 'New Section', new_creative_section_path(@creative) %> |
 
 
+<%= link_to t('add_section'), new_creative_section_path(@creative), :class => "small button primary"  %>  
+</fieldset>
+<%= link_to 'Редактировать креатив', edit_creative_path(@creative), :class => "small button alert"  %>
 
-<%= link_to 'Edit', edit_creative_path(@creative) %> |
-<%= link_to 'Back', creatives_path %>
+<%= link_to 'Вернуться', creatives_path, :class => "small button secondary" %>
+</div>

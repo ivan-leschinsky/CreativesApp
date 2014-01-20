@@ -5,6 +5,7 @@ Creativ::Application.routes.draw do
 
 
   scope "(:locale)", locale: /ru|en/ do
+    
     resources :creatives do
       resources :sections
     end

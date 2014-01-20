@@ -13,6 +13,13 @@
   background-color: #212D48;
 }
 
+.top-bar-section ul {
+  background-color: #212D48;
+}
+.top-bar{
+  background-color: #212D48;
+}
+
 
 
 
@@ -46,7 +53,7 @@
 // to make views framework-neutral
 main {
   @include twelve-columns;
-  background-color: #eee;
+  //background-color: #eee;
   }
 section {
   @extend .row;

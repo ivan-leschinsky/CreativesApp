@@ -1,5 +1,7 @@
-<h1>New section</h1>
-
+<div class="row">
+<h1>Новая глава</h1>
+<fieldset>
 <%= render 'form' %>
-
-<%= link_to 'Back', creative_sections_path %>
+</fieldset>
+<%= link_to t('back'), creative_sections_path, :class => "tiny button secondary" %>
+</div>

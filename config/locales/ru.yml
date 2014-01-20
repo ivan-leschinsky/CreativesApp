@@ -28,6 +28,12 @@ ru:
   users: "Все пользователи"
   sign_up: "Регистрация"
   edit_account: "Редактировать аккаунт"
+  show: "Читать"
+  edit: "Редактировать"
+  destroy: "Удалить"
+  add_section: "Добавить главу"
+  are_you_sure: "Вы уверены?"
+  back: "Назад"
   activerecord:
     models:
       creative: "Креатив"

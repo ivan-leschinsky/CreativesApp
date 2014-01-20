@@ -1,4 +1,36 @@
-<h1>Listing creatives</h1>
+<div class="row">
+<%= link_to 'Новый креатив', new_creative_path, class: "button alert radius right" %>
+<h1>Все креативы</h1>
+
+<div class="panel clearfix">
+    <a class="button right">Float Right</a>
+    <a class="button left">Float Left</a>
+</div>
+
+    <% @creatives.each do |creative| %>
+      <div class="panel clearfix">      
+        <div class="left">
+        <h3>
+          <%= link_to creative, :class => "th radius" do %>
+              <h3><span class="label"><%= creative.name %></span></h3>
+          <% end %>
+        </h3>
+        <%= creative.description %><br/>
+        <%= creative.sections.size %> глав
+        </div>
+        <div class="right">
+        <ul class="button-group radius">
+          <li><%= link_to t('show'), creative, class: "small button success"%></li>
+          <li><%= link_to t('edit'), edit_creative_path(creative), class: "small button" %></li>
+        <li><%= link_to t('destroy'), creative, method: :delete, data: { confirm: t('are_you_sure')}, class: "small button alert" %></li>
+        </ul>
+        
+
+
+
+        </div>
+      </div>        
+    <% end %>
 
 <table>
   <thead>
@@ -18,9 +50,9 @@
         <td><%= creative.name %></td>
         <td><%= creative.description %></td>
         <td><%= creative.sections.to_a.to_s %></td>
-        <td><%= link_to 'Show', creative, class: "button radius"%></td>
-        <td><%= link_to 'Edit', edit_creative_path(creative), class: "button" %></td>
-        <td><%= link_to 'Destroy', creative, method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %></td>
+        <td><%= link_to t('show'), creative, class: "tiny button success radius"%></td>
+        <td><%= link_to t('edit'), edit_creative_path(creative), class: "tiny button round" %></td>
+        <td><%= link_to t('destroy'), creative, method: :delete, data: { confirm: 'Are you sure?' }, class: "tiny button alert" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +60,11 @@
 
 <br>
 
-<%= link_to 'New Creative', new_creative_path, class: "button radius" %>
+
+
+<ul class="button-group round">
+  <li><a href="#" class="small button">Button 1</a></li>
+  <li><a href="#" class="small button alert disabled">Button 2</a></li>
+  <li><a href="#" class="small button success [disabled]">Button 3</a></li>
+</ul>
+</div>

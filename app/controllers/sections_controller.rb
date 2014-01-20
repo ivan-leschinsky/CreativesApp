@@ -11,6 +11,7 @@ class SectionsController < ApplicationController
 
   def new
     @section = Section.new
+    @section.creative_id = params[:creative_id]
   end
 
   def edit
@@ -18,36 +19,31 @@ class SectionsController < ApplicationController
 
   def create
     @section = Section.new(section_params)
-
-    respond_to do |format|
-      if @section.save
-        format.html { redirect_to @section, notice: 'Section was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @section }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @section.errors, status: :unprocessable_entity }
-      end
+  
+    if @section.save
+      redirect_to @section.creative, notice: 'Глава успешно создана.'
+    else
+      render action: 'new'
     end
+  
   end
 
   def update
-    respond_to do |format|
-      if @section.update(section_params)
-        format.html { redirect_to @section, notice: 'Section was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @section.errors, status: :unprocessable_entity }
-      end
-    end
+    
+    if @section.update(section_params)
+      redirect_to @section.creative, notice: 'Глава успешно обновлена.'
+    else
+      render action: 'new'
+    end 
   end
 
   def destroy
+    
+    creative_id = @section.creative_id
     @section.destroy
-    respond_to do |format|
-      format.html { redirect_to sections_url }
-      format.json { head :no_content }
-    end
+
+    redirect_to creative_path(creative_id)
+    
   end
 
   private

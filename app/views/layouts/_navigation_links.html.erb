@@ -1,4 +1,7 @@
 <%# add navigation links to this file %>
+<li>
+  <input type="text" id="right-label" placeholder="Поиск будет тут">
+</li>
 <% if user_signed_in? %>
   <li><%= link_to (t'logout'), destroy_user_session_path, :method=>'delete' %></li>
 <% else %>

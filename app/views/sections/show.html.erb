@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Name:</strong>
   <%= @section.name %>
@@ -17,8 +15,8 @@
 
 <p>
   <strong>Creative:</strong>
-  <%= @section.creative_id %>
+  <%= @section.creative.name %>
 </p>
 
-<%= link_to 'Edit', edit_creative_section_path(@section) %> |
-<%= link_to 'Back', creative_sections_path %>
+<%= link_to 'Edit', edit_creative_section_path(@section.creative_id, @section) %> |
+<%= link_to 'Back', creative_path(@section.creative_id) %>

@@ -10,5 +10,41 @@
   <%= @creative.description %>
 </p>
 
+<h1>Главы <%= @creative.name %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Number</th>
+      <th>Body</th>
+      <th>Creative</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @creative.sections.each do |section| %>
+      <tr>
+        <td><%= section.name %></td>
+        <td><%= section.number %></td>
+        <td><%= section.body %></td>
+        <td><%= section.creative_id %></td>
+        <td><%= link_to 'Show', section %></td>
+        <td><%= link_to 'Edit', edit_creative_section_path(section) %></td>
+        <td><%= link_to 'Destroy', section, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Section', new_creative_section_path(@creative) %> |
+
+
+
 <%= link_to 'Edit', edit_creative_path(@creative) %> |
 <%= link_to 'Back', creatives_path %>

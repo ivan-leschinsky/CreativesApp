@@ -1,28 +1,21 @@
 class CreativesController < ApplicationController
-  before_action :set_creative, only: [:show, :edit, :update, :destroy]
+  before_action :set_creative, :only => [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, :except => [:show, :index]
 
-  # GET /creatives
-  # GET /creatives.json
   def index
     @creatives = Creative.all
   end
 
-  # GET /creatives/1
-  # GET /creatives/1.json
   def show
   end
 
-  # GET /creatives/new
   def new
     @creative = Creative.new
   end
 
-  # GET /creatives/1/edit
   def edit
   end
 
-  # POST /creatives
-  # POST /creatives.json
   def create
     @creative = Creative.new(creative_params)
 

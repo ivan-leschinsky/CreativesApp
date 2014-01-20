@@ -1,4 +1,4 @@
-<h1>Listing sections</h1>
+<h1>Главы <%= @sections.first.creative.name%></h1>
 
 <table>
   <thead>
@@ -21,7 +21,7 @@
         <td><%= section.body %></td>
         <td><%= section.creative_id %></td>
         <td><%= link_to 'Show', section %></td>
-        <td><%= link_to 'Edit', edit_section_path(section) %></td>
+        <td><%= link_to 'Edit', edit_creative_section_path(section) %></td>
         <td><%= link_to 'Destroy', section, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Section', new_section_path %>
+<%= link_to 'New Section', new_creative_section_path %>

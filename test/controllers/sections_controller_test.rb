@@ -44,6 +44,6 @@ class SectionsControllerTest < ActionController::TestCase
       delete :destroy, id: @section
     end
 
-    assert_redirected_to sections_path
+    assert_redirected_to creative_sections_path
   end
 end

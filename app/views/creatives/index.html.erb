@@ -5,6 +5,7 @@
     <tr>
       <th>Name</th>
       <th>Description</th>
+      <th>Creatives</th>
       <th></th>
       <th></th>
       <th></th>
@@ -16,9 +17,10 @@
       <tr>
         <td><%= creative.name %></td>
         <td><%= creative.description %></td>
-        <td><%= link_to 'Show', creative %></td>
-        <td><%= link_to 'Edit', edit_creative_path(creative) %></td>
-        <td><%= link_to 'Destroy', creative, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= creative.sections.to_a.to_s %></td>
+        <td><%= link_to 'Show', creative, class: "button radius"%></td>
+        <td><%= link_to 'Edit', edit_creative_path(creative), class: "button" %></td>
+        <td><%= link_to 'Destroy', creative, method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Creative', new_creative_path %>
+<%= link_to 'New Creative', new_creative_path, class: "button radius" %>

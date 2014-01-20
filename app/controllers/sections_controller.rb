@@ -6,9 +6,6 @@ class SectionsController < ApplicationController
     @sections = Section.all
   end
 
-  def show
-  end
-
   def new
     @section = Section.new
     @section.creative_id = params[:creative_id]

@@ -1,7 +1,36 @@
 <div class="row">
-<h1>Новая глава</h1>
-<fieldset>
-<%= render 'form' %>
-</fieldset>
-<%= link_to t('back'), creative_sections_path, :class => "tiny button secondary" %>
+  <h1>Новая глава</h1>
+  <fieldset>
+    <%= form_for @section, url: creative_sections_path do |f| %>
+      <% if @section.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@section.errors.count, "error") %> prohibited this section from being saved:</h2>
+
+          <ul>
+          <% @section.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= f.text_field :name, :placeholder => "Имя главы" %>
+      </div>
+      <div class="field">
+        <%= f.number_field :number %>
+      </div>
+      <div class="field">
+        <%= text_area_tag :body, @section.body, :name => "section[body]", :class => "tinymce", :rows => 40, :cols => 120 %>
+        <%= tinymce %>
+      </div>
+      <div class="field">
+        <%= f.hidden_field :creative_id %>
+      </div>
+      <div class="actions">
+        <button type="submit" class="tiny button success round">Сохранить </button>
+      </div>
+    <% end %>
+  </fieldset>
+  <%= link_to t('back'), creative_path(@section.creative), :class => "tiny button secondary" %>
 </div>

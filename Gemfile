@@ -11,11 +11,14 @@ gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
 # Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+#gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'foundation-rails'
 gem 'devise'
 gem 'devise-i18n-views'
 gem 'devise-i18n'
+gem 'tinymce-rails'
+gem 'tinymce-rails-langs'
 
 group :development do
   gem 'better_errors'

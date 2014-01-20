@@ -1,70 +1,47 @@
 <div class="row">
-<%= link_to 'Новый креатив', new_creative_path, class: "button alert radius right" %>
-<h1>Все креативы</h1>
+<div class="large-12 columns">
+<%= link_to 'Новый креатив', new_creative_path, class: "button radius right" %>
+<h1 align="center">Все креативы</h1>
 
-<div class="panel clearfix">
-    <a class="button right">Float Right</a>
-    <a class="button left">Float Left</a>
 </div>
-
     <% @creatives.each do |creative| %>
-      <div class="panel clearfix">      
-        <div class="left">
+    <div class="medium-6 columns">
+      <div class="panel">      
         <h3>
-          <%= link_to creative, :class => "th radius" do %>
-              <h3><span class="label"><%= creative.name %></span></h3>
-          <% end %>
+        <h3>
+          "<%= link_to creative.name, creative %>"
         </h3>
         <%= creative.description %><br/>
-        <%= creative.sections.size %> глав
-        </div>
-        <div class="right">
-        <ul class="button-group radius">
+        <p><%= creative.sections.size %> глав</p>
+        <ul class="button-group round">
           <li><%= link_to t('show'), creative, class: "small button success"%></li>
           <li><%= link_to t('edit'), edit_creative_path(creative), class: "small button" %></li>
         <li><%= link_to t('destroy'), creative, method: :delete, data: { confirm: t('are_you_sure')}, class: "small button alert" %></li>
         </ul>
-        
-
-
-
-        </div>
       </div>        
+      </div>
     <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Creatives</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @creatives.each do |creative| %>
-      <tr>
-        <td><%= creative.name %></td>
-        <td><%= creative.description %></td>
-        <td><%= creative.sections.to_a.to_s %></td>
-        <td><%= link_to t('show'), creative, class: "tiny button success radius"%></td>
-        <td><%= link_to t('edit'), edit_creative_path(creative), class: "tiny button round" %></td>
-        <td><%= link_to t('destroy'), creative, method: :delete, data: { confirm: 'Are you sure?' }, class: "tiny button alert" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-
-
-<ul class="button-group round">
-  <li><a href="#" class="small button">Button 1</a></li>
-  <li><a href="#" class="small button alert disabled">Button 2</a></li>
-  <li><a href="#" class="small button success [disabled]">Button 3</a></li>
+<hr /><hr />
+ <% @creatives.each do |creative| %>
+ <div class="medium-6 columns">
+      <ul class="pricing-table">
+  <li class="title"><%= link_to creative.name, creative %></li>
+  <li class="price"><%= creative.description %></li>
+  <li class="description">
+  <span class="label radius">Программирование</span>
+  <span class="secondary label radius">Спорт</span>
+  <span class="success label radius">Еще что-то</span>
+  <span class="alert label round">И еще...</span>
+</li>
+  <li class="bullet-item"><%= creative.sections.size %> глав</li>
+  <li class="bullet-item">комментариев</li>
+  <li class="cta-button">
+  <%= link_to t('show'), creative, class: "tiny button success radius"%>
+          <%= link_to t('edit'), edit_creative_path(creative), class: "tiny button radius" %>
+        <%= link_to t('destroy'), creative, method: :delete, data: { confirm: t('are_you_sure')}, class: "tiny button alert radius" %>
+  
+  </li>
 </ul>
 </div>
+    <% end %>

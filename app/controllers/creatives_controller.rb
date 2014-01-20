@@ -10,14 +10,14 @@ class CreativesController < ApplicationController
   end
 
   def new
-    @creative = current_user.creatives.new
+    @creative =Creatives.new
   end
 
   def edit
   end
 
   def create
-    @creative = Post.new(creative_params)
+    @creative = current_user.creatives.new(creative_params)
 
     respond_to do |format|
       if @creative.save

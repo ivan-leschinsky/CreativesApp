@@ -6,6 +6,8 @@ Creativ::Application.routes.draw do
 
   scope "(:locale)", locale: /ru|en/ do
     
+    get 'tags/:tag', to: 'creatives#index', as: :tag
+
     resources :creatives do
       resources :sections
     end

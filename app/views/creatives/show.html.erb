@@ -5,10 +5,12 @@
         <%= @creative.name %>
       </h2>
     </legend>
-    <h5>Теги:
+    <h5>Автор:
+      <span class="alert label radius"><%= link_to @creative.user.user_name, @creative.user %></span>
+      Теги:
       <span class="label radius">Программирование</span>
       <span class="success label radius">Еще что-то</span>
-      <span class="alert label radius">И еще...</span>
+      <span class="label radius">И еще...</span>
     </h5>
 
     <p>
@@ -20,16 +22,18 @@
       <span class="alert label">Тут картинка будет</span>
     </a>
     -->
-    <%= link_to t('add_section'), new_creative_section_path(@creative), :class => "small button primary"  %>
+    <% if current_user.try(:id) == @creative.user_id %>
+      <%= link_to t('add_section'), new_creative_section_path(@creative), :class => "small button primary"  %>
+    <% end %>
       <% @creative.sections.each do |section| %>
           <fieldset>
             <legend align="center"><h3><%= section.name %> (порядок: <%= section.number %>)</h3></legend>
             <p><%= section.body.html_safe %></p>
             
-            <% if current_user.id == @creative.user_id %>
+            <% if current_user.try(:id) == @creative.user_id %>
               <ul class="button-group radius right">
-                <li><%= link_to 'Edit', edit_creative_section_path(@creative, section), :class => "tiny button" %></li>
-                <li><%= link_to 'Destroy', creative_section_path(@creative, section), method: :delete, data: { confirm: t('are_you_sure') }, :class => "tiny button alert" %></li>
+                <li><%= link_to t('edit'), edit_creative_section_path(@creative, section), :class => "tiny button" %></li>
+                <li><%= link_to t('destroy'), creative_section_path(@creative, section), method: :delete, data: { confirm: t('are_you_sure') }, :class => "tiny button alert" %></li>
               </ul>
             <% end %>
 
@@ -44,7 +48,7 @@
       
   </fieldset>
   <%= link_to 'Вернуться', creatives_path, :class => "small button secondary" %>
-  <% if current_user.id == @creative.user_id %>
+  <% if current_user.try(:id) == @creative.user_id %>
     <%= link_to 'Редактировать креатив', edit_creative_path(@creative), :class => "small button alert"  %>
   <% end %>
 </div>

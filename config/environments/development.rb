@@ -26,14 +26,15 @@ Creativ::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
-config.action_mailer.smtp_settings = {
+
+  config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
     port: 587,
     domain: "localhost:3000",
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: "rails.vanopiano@gmail.com",
-    password: "eclaireclaireclair"
+    user_name: ENV["GMAIL_USERNAME"],#"rails.vanopiano@gmail.com",
+    password: ENV["GMAIL_PASSWORD"]#"eclaireclaireclair"
   }
   # ActionMailer Config
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
@@ -42,13 +43,4 @@ config.action_mailer.smtp_settings = {
   # Send email in development mode.
   config.action_mailer.perform_deliveries = true
 
-=begin
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :test
-  config.action_mailer.logger = ActiveSupport::Logger.new("mailer.log")
-
-  #Send email in development mode.
-  config.action_mailer.perform_deliveries = true
-=end
 end

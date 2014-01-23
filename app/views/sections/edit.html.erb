@@ -20,8 +20,7 @@
         <%= f.number_field :number %>
       </div>
       <div class="field">
-        <%= text_area_tag :body, @section.body, :name => "section[body]", :class => "tinymce", :rows => 40, :cols => 120 %>
-        <%= tinymce %>
+        <%= text_area_tag :body, @section.body, :name => "section[body]", :rows => 80, :cols => 120 %>
       </div>
       <div class="field">
         <%= f.hidden_field :creative_id %>

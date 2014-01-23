@@ -1,20 +1,15 @@
 Creativ::Application.routes.draw do
   
-  get '/:locale' => 'creatives#index'
   root "creatives#index"
 
+  get 'tags/:tag', to: 'creatives#index', as: :tag
 
-  scope "(:locale)", locale: /ru|en/ do
-    
-    get 'tags/:tag', to: 'creatives#index', as: :tag
+  resources :creatives do
+    resources :sections
+  end
 
-    resources :creatives do
-      resources :sections
-    end
-
-    devise_for :users, :controllers => {:registrations => "registrations"}
-    resources :users
-  end   
+  devise_for :users, :controllers => {:registrations => "registrations"}
+  resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

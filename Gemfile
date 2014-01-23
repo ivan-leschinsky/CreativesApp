@@ -17,8 +17,6 @@ gem 'foundation-rails'
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
-gem 'tinymce-rails'
-gem 'tinymce-rails-langs'
 
 group :development do
   gem 'better_errors'

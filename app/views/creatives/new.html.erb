@@ -1,4 +1,4 @@
-<h1>Новый креатив</h1>
+<h1><%= t('.title')%></h1>
 
 <%= form_for(@creative) do |f| %>
   <% if @creative.errors.any? %>
@@ -32,9 +32,9 @@
   </div>
  <div class="row">
   <div class="small-9 small-offset-3 columns">
-    <%= f.submit %>
+    <button type="submit" class="tiny button success radius"><%= t('.create')%></button>
   </div>
 </div>
 <% end %>
 
-<%= link_to 'Вернуться к креативам', creatives_path %>
+<%= link_to t('.back'), creatives_path, :class => "small button secondary radius" %>

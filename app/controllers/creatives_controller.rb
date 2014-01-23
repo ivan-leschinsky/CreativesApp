@@ -10,7 +10,7 @@ class CreativesController < ApplicationController
   end
 
   def new
-    @creative =Creatives.new
+    @creative =Creative.new
   end
 
   def edit

@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
   def current_user_admin?
   	current_user.try(:admin?)
   end
- 
+
   def authenticate_admin
   	redirect_to root_path unless current_user_admin?
   end

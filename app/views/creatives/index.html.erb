@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="large-12 columns">
+  <div class="medium-12 columns">
   <% if current_user %>
   <%= link_to 'Новый креатив', new_creative_path, class: "button radius right" %>
   <% end %>
@@ -18,7 +18,8 @@
           <li><%= link_to t('show'), creative, class: "small button success"%></li>
                 <% if current_user.try(:id) == creative.user_id %>
           <li><%= link_to t('edit'), edit_creative_path(creative), class: "small button" %></li>
-        <li><%= link_to t('destroy'), creative, method: :delete, data: { confirm: t('are_you_sure')}, class: "small button alert" %></li>
+          
+          <li><%= link_to t('destroy'), creative, :method => :delete, data: { confirm: t('.are_you_sure')}, :class => "small button alert" %></li>
         <% end %>
         </ul>
       </div>        

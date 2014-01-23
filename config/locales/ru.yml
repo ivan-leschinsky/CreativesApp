@@ -21,7 +21,6 @@
 
 ru:
   hello: "Привет, мир!"
-  creatives: "Креативы"
   menu: "Меню"
   logout: "Выход"
   login: "Вход"
@@ -34,6 +33,14 @@ ru:
   add_section: "Добавить главу"
   are_you_sure: "Вы уверены?"
   back: "Назад"
+  creatives:
+    title: "Креативы"
+    index:
+      are_you_sure: "Вы уверены?"
+    new:
+      title: "Новый креатив"
+      create: "Создать"
+      back: "Вернуться к Креативам"
   activerecord:
     models:
       creative: "Креатив"

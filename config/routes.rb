@@ -1,11 +1,14 @@
 Creativ::Application.routes.draw do
   
+  
+
   root "creatives#index"
 
-  get 'tags/:tag', to: 'creatives#index', as: :tag
+  #get 'tags/:tag', to: 'creatives#index', as: :tag
 
   resources :creatives do
     resources :sections
+    resources :comments
   end
 
   devise_for :users, :controllers => {:registrations => "registrations"}

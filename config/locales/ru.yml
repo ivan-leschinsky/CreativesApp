@@ -27,20 +27,29 @@ ru:
   users: "Все пользователи"
   sign_up: "Регистрация"
   edit_account: "Редактировать аккаунт"
-  show: "Читать"
   edit: "Редактировать"
-  destroy: "Удалить"
-  add_section: "Добавить главу"
   are_you_sure: "Вы уверены?"
   back: "Назад"
+  comments:
+    create:
+      thank: "Спасибо за комментарий"
   creatives:
     title: "Креативы"
     index:
+      show: "Читать"
       are_you_sure: "Вы уверены?"
     new:
       title: "Новый креатив"
       create: "Создать"
       back: "Вернуться к Креативам"
+    show:
+      add: "Добавить комментарий"
+      please_comment: "Прокомментируйте:"
+      edit: "Редактировать креатив"
+      destroy: "Удалить"
+      add_section: "Добавить главу"
+      edit-s: "Редактировать креатив"
+      destroy-s: "Удалить"
   activerecord:
     models:
       creative: "Креатив"
@@ -77,3 +86,57 @@ ru:
               blank: "не может быть пустым"
             password_confirmation:
               blank: "не может быть пустым"
+  datetime:
+    distance_in_words:
+      half_a_minute: "half a minute"
+      less_than_x_seconds:
+        one:   "менее 1 секунды"
+        other: "менее %{count} секунд"
+      x_seconds:
+        one:   "1 second"
+        other: "%{count} seconds"
+      less_than_x_minutes:
+        one:   "менее минуты"
+        other: "менее %{count} минут"
+      x_minutes:
+        one:   "1 минута"
+        other: "%{count} минут"
+      около_x_hours:
+        one:   "около 1 часа"
+        other: "около %{count} часов"
+      x_days:
+        one:   "1 день"
+        other: "%{count} дней"
+      около_x_months:
+        one:   "около 1 месяца"
+        other: "около %{count} months"
+      x_months:
+        one:   "1 month"
+        other: "%{count} months"
+      около_x_years:
+        one:   "около 1 year"
+        other: "около %{count} years"
+      over_x_years:
+        one:   "over 1 year"
+        other: "over %{count} years"
+      almost_x_years:
+        one:   "почти год"
+        other: "почти %{count} лет"
+    prompts:
+      year:   "Год"
+      month:  "Месяц"
+      day:    "День"
+      hour:   "Час"
+      minute: "Минута"
+      second: "Секунда"
+
+  helpers:
+    select:
+      # Default value for :prompt => true in FormOptionsHelper
+      prompt: "Пожалуйста выберите"
+
+    # Default translation keys for submit and button FormHelper
+    submit:
+      create: 'Создать %{model}'
+      update: 'Обновить %{model}'
+      submit: 'Сохранить %{model}'

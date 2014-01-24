@@ -7,6 +7,8 @@ class CreativesController < ApplicationController
   end
 
   def show
+    @comments = @creative.comments.to_a
+    @new_comment = @creative.comments.new
   end
 
   def new

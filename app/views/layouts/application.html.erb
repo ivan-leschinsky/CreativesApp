@@ -16,8 +16,6 @@
     </header>
     <div class="row">
       <%= render 'layouts/messages' %>
-      <%= link_to_unless_current "Русский", :locale => "ru"%>
-      <%= link_to_unless_current "English", :locale => "en" %>
       <%= yield %>
     </div>
     <%# Foundation 5 won't work when application.js is included in HEAD %>

@@ -1,0 +1,10 @@
+/* Insert a notice between the last comment and the comment form */
+$("#comment-notice").html("<div data-alert class='alert-box radius success'><%= t('.thank') %></div>");
+
+$(".alert-box").delay(1200).fadeOut(300);
+
+/* Add the new comment to the bottom of the comments list */
+$("#comments").append("<%= escape_javascript(render(@comment)) %>");
+
+/* Reset the comment form */
+$("#new_comment")[0].reset();

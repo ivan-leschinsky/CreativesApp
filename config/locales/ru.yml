@@ -44,11 +44,11 @@ ru:
       back: "Вернуться к Креативам"
     show:
       add: "Добавить комментарий"
-      please_comment: "Прокомментируйте:"
+      please_comment: "Добавьте свой комментарий:"
       edit: "Редактировать креатив"
       destroy: "Удалить"
       add_section: "Добавить главу"
-      edit-s: "Редактировать креатив"
+      edit-s: "Редактировать главу"
       destroy-s: "Удалить"
   activerecord:
     models:
@@ -88,7 +88,7 @@ ru:
               blank: "не может быть пустым"
   datetime:
     distance_in_words:
-      half_a_minute: "half a minute"
+      half_a_minute: "пол минуты"
       less_than_x_seconds:
         one:   "менее 1 секунды"
         other: "менее %{count} секунд"

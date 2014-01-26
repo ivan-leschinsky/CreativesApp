@@ -10,6 +10,8 @@ Creativ::Application.routes.draw do
     resources :sections
     resources :comments
   end
+  
+  post "markdown/preview"
 
   devise_for :users, :controllers => {:registrations => "registrations"}
   resources :users

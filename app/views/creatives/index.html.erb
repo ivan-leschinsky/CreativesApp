@@ -16,7 +16,7 @@
               <p><%= creative.sections.size %> глав</p>
         <ul class="button-group radius">
           <li><%= link_to t('.show'), creative, class: "small button success"%></li>
-                <% if current_user.try(:id) == creative.user_id %>
+                <% if author_user?(creative) %>
           <li><%= link_to t('creatives.show.edit'), edit_creative_path(creative), class: "small button" %></li>
           
           <li><%= link_to t('creatives.show.destroy'), creative, :method => :delete, data: { confirm: t('.are_you_sure')}, :class => "small button alert" %></li>

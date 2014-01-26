@@ -19,6 +19,8 @@
       <%= yield %>
     </div>
     <%# Foundation 5 won't work when application.js is included in HEAD %>
+    <script type="text/javascript" src="markitup/jquery.markitup.js"></script>
+    <script type="text/javascript" src="markitup/sets/markdown/set.js"></script>
     <%= javascript_include_tag "application" %>
   </body>
 </html>

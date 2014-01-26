@@ -29,8 +29,7 @@
     <% @creative.sections.each do |section| %>
         <fieldset>
           <legend align="center"><h3><%= section.name %> (порядок: <%= section.number %>)</h3></legend>
-          <p><%= section.body.html_safe %></p>
-          
+          <p><%= markdown(section.body) %></p>
           <% if current_user.try(:id) == @creative.user_id %>
             <ul class="button-group radius right">
               <li><%= link_to t('.edit-s'), edit_creative_section_path(@creative, section), :class => "tiny button" %></li>
@@ -49,8 +48,8 @@
  
     <div id="comment-notice"></div>
      
-    <h4><%= t('.please_comment') %></h4>
     <fieldset>
+    <h5><%= t('.please_comment') %></h5>
       <%= form_for @new_comment, :url => creative_comments_path(@creative), remote: true do |f| %>
           <%= f.text_area :body, :rows => 8, :required => true%><br />
           <button type="submit" class="tiny button success radius"><%= t('.add') %></button>

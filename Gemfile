@@ -34,5 +34,5 @@ end
 #new
 gem 'acts-as-taggable-on'
 gem 'carrierwave'
-gem 'fog'
 gem 'rmagick'
+gem 'jquery-fileupload-rails'

@@ -22,7 +22,9 @@
       <span class="alert label">Тут картинка будет</span>
     </a>
     -->
-    <% if current_user.try(:id) == @creative.user_id %>
+    http://guides.rubyonrails.org/active_record_querying.html#ordering
+
+    <% if author_user?@creative) %>
       <%= link_to t('.add_section'), new_creative_section_path(@creative), :class => "small button primary"  %>
       <%= link_to t('.edit'), edit_creative_path(@creative), :class => "small button alert"  %>
     <% end %>
@@ -30,7 +32,7 @@
         <fieldset>
           <legend align="center"><h3><%= section.name %> (порядок: <%= section.number %>)</h3></legend>
           <p><%= markdown(section.body) %></p>
-          <% if current_user.try(:id) == @creative.user_id %>
+          <% if author_user?(@creative) %>
             <ul class="button-group radius right">
               <li><%= link_to t('.edit-s'), edit_creative_section_path(@creative, section), :class => "tiny button" %></li>
               <li><%= link_to t('.destroy-s'), creative_section_path(@creative, section), method: :delete, data: { confirm: t('are_you_sure') }, :class => "tiny button alert" %></li>
@@ -44,17 +46,20 @@
     <div id="comments">
       <%= render :partial => @comments, :locals => { :list => true } %>
     </div>
-    <hr />
- 
-    <div id="comment-notice"></div>
-     
-    <fieldset>
-    <h5><%= t('.please_comment') %></h5>
-      <%= form_for @new_comment, :url => creative_comments_path(@creative), remote: true do |f| %>
-          <%= f.text_area :body, :rows => 8, :required => true%><br />
-          <button type="submit" class="tiny button success radius"><%= t('.add') %></button>
-      <% end %>
-    </fieldset>
+
+    <% if current_user %>
+      <hr />
+   
+      <div id="comment-notice"></div>
+       
+      <fieldset>
+      <h5><%= t('.please_comment') %></h5>
+        <%= form_for @new_comment, :url => creative_comments_path(@creative), remote: true do |f| %>
+            <%= f.text_area :body, :rows => 8, :required => true%><br />
+            <button type="submit" class="tiny button success radius"><%= t('.add') %></button>
+        <% end %>
+      </fieldset>
+    <% end %>
   </fieldset>
   <%= link_to 'Вернуться', creatives_path, :class => "small button secondary" %>
 </div>

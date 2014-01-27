@@ -10,7 +10,7 @@ Creativ::Application.routes.draw do
     resources :sections
     resources :comments
   end
-  
+  post 'creatives/:id/reorder' => 'creatives#reorder', :as => :reorder
   post "markdown/preview"
 
   devise_for :users, :controllers => {:registrations => "registrations"}

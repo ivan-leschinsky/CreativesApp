@@ -13,8 +13,4 @@ module ApplicationHelper
     Redcarpet::Markdown.new(renderer, options).render(text).html_safe
   end
 
-  def author_user?(creative)
-    current_user.try(:id) == creative.user_id
-  end
-
 end

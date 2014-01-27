@@ -50,6 +50,8 @@ ru:
       add_section: "Добавить главу"
       edit-s: "Редактировать главу"
       destroy-s: "Удалить"
+    reorder:
+      reordered: "Порядок глав изменен"
   activerecord:
     models:
       creative: "Креатив"

@@ -1,5 +1,5 @@
 class CreativesController < ApplicationController
-  before_action :set_creative, :only => [:show, :edit, :update, :destroy]
+  before_action :set_creative, :only => [:show, :edit, :update, :destroy, :reorder]
   before_filter :authenticate_user!, :except => [:show, :index]
 
   def index
@@ -9,6 +9,7 @@ class CreativesController < ApplicationController
   def show
     @comments = @creative.comments.to_a
     @new_comment = @creative.comments.new
+    @sections = @creative.sections.order(number: :asc)
   end
 
   def new
@@ -31,6 +32,15 @@ class CreativesController < ApplicationController
       end
     end
   end
+
+  def reorder
+    section_ids = params[:sorted].split(',')
+    section_ids.each_with_index do |section_id, i|
+      section = Section.find(section_id)
+      section.update_attribute(:number, i)
+    end
+  end
+
 
   # PATCH/PUT /creatives/1
   # PATCH/PUT /creatives/1.json
@@ -64,6 +74,6 @@ class CreativesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def creative_params
-      params.require(:creative).permit(:name, :description)
+      params.require(:creative).permit(:name, :description)#, :sorted)
     end
 end

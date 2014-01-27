@@ -17,22 +17,37 @@
       <%= @creative.description %>
     </p>
 
-    <!--
-    <a class="th radius" href="#">
-      <span class="alert label">Тут картинка будет</span>
-    </a>
-    -->
-    http://guides.rubyonrails.org/active_record_querying.html#ordering
+<div class="row">
+  <div class="medium-4 columns">
+  <p>
+  <div id="mySpinner" align="center"></div>
+  </div>
+  <div class="medium-4 columns">
+    <fieldset>
+      <div id="sortable" data-url="<%= reorder_path(@creative) %>">
+        <% @sections.each do |section| %>
+          <div id="<%= section.id %>" class="panel callout radius"><%= section.name %> - <%= section.number %></div>
+        <% end %>
+      </div>
+    </fieldset>
+  </div>
+  <div class="medium-4 columns">
+    <div id="sortable-notice"></div>
+  </div>
+</div>
 
-    <% if author_user?@creative) %>
+
+
+
+    <% if @creative.author?(current_user) %>
       <%= link_to t('.add_section'), new_creative_section_path(@creative), :class => "small button primary"  %>
       <%= link_to t('.edit'), edit_creative_path(@creative), :class => "small button alert"  %>
     <% end %>
-    <% @creative.sections.each do |section| %>
+    <% @sections.each do |section| %>
         <fieldset>
           <legend align="center"><h3><%= section.name %> (порядок: <%= section.number %>)</h3></legend>
           <p><%= markdown(section.body) %></p>
-          <% if author_user?(@creative) %>
+          <% if @creative.author?(current_user) %>
             <ul class="button-group radius right">
               <li><%= link_to t('.edit-s'), edit_creative_section_path(@creative, section), :class => "tiny button" %></li>
               <li><%= link_to t('.destroy-s'), creative_section_path(@creative, section), method: :delete, data: { confirm: t('are_you_sure') }, :class => "tiny button alert" %></li>

@@ -33,17 +33,21 @@ ru:
   comments:
     create:
       thank: "Спасибо за комментарий"
+    time: "%{time_ago} назад"
   creatives:
     title: "Креативы"
     index:
-      show: "Читать"
+      show: "Открыть"
+      read: "Читать"
       are_you_sure: "Вы уверены?"
     new:
       title: "Новый креатив"
       create: "Создать"
       back: "Вернуться к Креативам"
     show:
+      comments: "Комментарии"
       add: "Добавить комментарий"
+      read: "Режим чтения"
       please_comment: "Добавьте свой комментарий:"
       edit: "Редактировать креатив"
       destroy: "Удалить"
@@ -52,6 +56,8 @@ ru:
       destroy-s: "Удалить"
     reorder:
       reordered: "Порядок глав изменен"
+    read:
+      chapters: "Главы"
   activerecord:
     models:
       creative: "Креатив"
@@ -103,19 +109,19 @@ ru:
       x_minutes:
         one:   "1 минута"
         other: "%{count} минут"
-      около_x_hours:
+      about_x_hours:
         one:   "около 1 часа"
         other: "около %{count} часов"
       x_days:
         one:   "1 день"
         other: "%{count} дней"
-      около_x_months:
+      about_x_months:
         one:   "около 1 месяца"
         other: "около %{count} months"
       x_months:
         one:   "1 month"
         other: "%{count} months"
-      около_x_years:
+      about_x_years:
         one:   "около 1 year"
         other: "около %{count} years"
       over_x_years:

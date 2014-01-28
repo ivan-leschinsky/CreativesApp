@@ -1,6 +1,6 @@
 <%= div_for comment do %>
   <span class="dateandoptions">
-    Posted <%= time_ago_in_words(comment.created_at) %> ago<br />
+    <%= t('comments.time', time_ago: time_ago_in_words(comment.created_at))%> <br />
     <%= link_to 'Delete', creative_comment_path(comment.creative, comment), :method => :delete, :class => "tiny button alert", :remote => true  %>
   </span>
     <br />

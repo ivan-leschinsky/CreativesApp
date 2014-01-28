@@ -1,5 +1,5 @@
 class CreativesController < ApplicationController
-  before_action :set_creative, :only => [:show, :edit, :update, :destroy, :reorder]
+  before_action :set_creative, :only => [:show, :edit, :update, :destroy, :reorder, :read]
   before_filter :authenticate_user!, :except => [:show, :index]
 
   def index
@@ -9,6 +9,10 @@ class CreativesController < ApplicationController
   def show
     @comments = @creative.comments.to_a
     @new_comment = @creative.comments.new
+    @sections = @creative.sections.order(number: :asc)
+  end
+
+  def read
     @sections = @creative.sections.order(number: :asc)
   end
 

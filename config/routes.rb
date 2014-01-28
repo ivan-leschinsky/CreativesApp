@@ -1,17 +1,15 @@
 Creativ::Application.routes.draw do
-  
-  
-
   root "creatives#index"
 
   #get 'tags/:tag', to: 'creatives#index', as: :tag
 
   resources :creatives do
     resources :sections
+    resources :pictures
     resources :comments
   end
+  get 'creatives/:id/read' => 'creatives#read', :as => :read_creative
   post 'creatives/:id/reorder' => 'creatives#reorder', :as => :reorder
-  post "markdown/preview"
 
   devise_for :users, :controllers => {:registrations => "registrations"}
   resources :users

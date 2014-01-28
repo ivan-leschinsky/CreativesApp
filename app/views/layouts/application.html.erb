@@ -14,15 +14,11 @@
     <header>
       <%= render 'layouts/navigation' %>
     </header>
-    <div class="row">
-
+    <div class="row main-row">
       <%= render 'layouts/messages' %>
-      
+      <%= javascript_include_tag "application" %> 
       <%= yield %>
+      <%= javascript_include_tag "app-after" %>
     </div>
-    <%# Foundation 5 won't work when application.js is included in HEAD %>
-  
-  <%= javascript_include_tag "application" %>
-
   </body>
 </html>

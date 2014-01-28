@@ -12,14 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-fileupload
 //= require jquery-ui
 //= require foundation
-//= require markitup
 //= require app.js
-//= require creatives.js
-
 
 // require_tree .
-$(document).ready(function()	{
-    $('#markdown').markItUp(myMarkdownSettings);
-});

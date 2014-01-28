@@ -1,8 +1,9 @@
-<%= div_for comment do %>
-  <span class="dateandoptions">
-    <%= t('comments.time', time_ago: time_ago_in_words(comment.created_at))%> <br />
-    <%= link_to 'Delete', creative_comment_path(comment.creative, comment), :method => :delete, :class => "tiny button alert", :remote => true  %>
-  </span>
+<%= div_for comment, :class=>"th" do %>
+    <h6>Автор:<span class="alert label radius">Имя<%#= link_to comment.user.user_name, comment.user %></span>
+    </h6>
+    <%= t('comments.time', time_ago: time_ago_in_words(comment.created_at))%><hr />
+    <%= link_to 'Delete', creative_comment_path(comment.creative, comment), :method => :delete, :class => "tiny button alert round", :remote => true  %>
+  
     <br />
   <%= content_tag(:p, comment.body, :class => "comment-body") %>
 <% end %>

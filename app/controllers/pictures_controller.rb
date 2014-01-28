@@ -4,9 +4,10 @@ class PicturesController < ApplicationController
   # GET /pictures
   # GET /pictures.json
   def index
-    creative = Creative.find(params[:creative_id])
-    @pictures = creative.pictures.all
-    
+    @creative = Creative.find(params[:creative_id])
+    @pictures = @creative.pictures.all
+    @picture = Picture.new
+
     respond_to do |format|
       format.html # index.html.erb
       # format.json { render json: @pictures }
@@ -73,7 +74,7 @@ class PicturesController < ApplicationController
   def destroy
     @picture.destroy
     respond_to do |format|
-      format.html { redirect_to pictures_url }
+      format.html { redirect_to creative_pictures_url }
       format.json { head :no_content }
     end
   end

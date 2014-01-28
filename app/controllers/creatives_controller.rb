@@ -28,7 +28,7 @@ class CreativesController < ApplicationController
 
     respond_to do |format|
       if @creative.save
-        format.html { redirect_to @creative, notice: 'Creative was successfully created.' }
+        format.html { redirect_to @creative, notice: t('.created_notice') }
         format.json { render action: 'show', status: :created, location: @creative }
       else
         format.html { render action: 'new' }

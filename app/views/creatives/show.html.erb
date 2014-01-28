@@ -47,25 +47,46 @@
         </div>
       </div>
     </div>
-    <hr />
-    <h2><%= t('.comments')%></h2>
-    <div id="comments">
-      <%= render :partial => @comments, :locals => { :list => true } %>
-    </div>
 
+    <hr />
+
+    <ul class="clearing-thumbs" data-clearing>
+      <% if @creative.pictures.empty?%>
+        <%= content_tag :h3, t('.no_pictures') %>
+      <% else %>
+        <% @creative.pictures.each do |pic| %>
+          <li><a class="th" href="<%= pic.file.url%>"><img data-caption="<%= pic.file.to_s %>" src="<%= pic.file.thumb.url %>"></a></li>
+        <% end %>
+      <% end %>
+    </ul>
+    <%= link_to t('.addedit-pictures'), creative_pictures_path(@creative), :class => "button info round" if @creative.author?(current_user)%>
+    <hr />
+
+    <ul class="clearing-thumbs" data-clearing>
+      <% if @comments.empty?%>
+        <%= content_tag :h2, t('.no_comments')%>
+      <% else %>
+        <%= content_tag :h3, t('.comments')%>
+        <div id="comments">
+          <%= render :partial => @comments, :locals => { :list => true } %>
+        </div>
+      <% end %>
+    </ul>
+    
     <% if current_user %>
       <hr />
-   
-      <div id="comment-notice"></div>
-       
-      <fieldset>
-      <h5><%= t('.please_comment') %></h5>
-        <%= form_for @new_comment, :url => creative_comments_path(@creative), remote: true do |f| %>
-            <%= f.text_area :body, :rows => 8, :required => true%><br />
-            <button type="submit" class="tiny button success radius"><%= t('.add') %></button>
-        <% end %>
+      <fieldset class="medium-4 columns">
+        <h5><%= t('.please_comment') %></h5>
+          <%= form_for @new_comment, :url => creative_comments_path(@creative), remote: true do |f| %>
+              <%= f.text_area :body, :rows => 8, :required => true%><br />
+              <button type="submit" class="tiny button success radius"><%= t('.add') %></button>
+          <% end %>
       </fieldset>
+      <div id="comment-notice"></div>
     <% end %>
+    
+
+    
   </fieldset>
   <%= link_to 'Вернуться', creatives_path, :class => "small button secondary" %>
 </div>

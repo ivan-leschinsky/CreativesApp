@@ -45,6 +45,7 @@ ru:
       create: "Создать"
       back: "Вернуться к Креативам"
     show:
+      no_pictures: "Нет изображений"
       comments: "Комментарии"
       add: "Добавить комментарий"
       read: "Режим чтения"
@@ -54,10 +55,13 @@ ru:
       add_section: "Добавить главу"
       edit-s: "Редактировать главу"
       destroy-s: "Удалить"
+      addedit-pictures: "Добавить / редактировать изображения"
     reorder:
       reordered: "Порядок глав изменен"
     read:
       chapters: "Главы"
+    create:
+      created_notice: "Креатив успешно создан"
   activerecord:
     models:
       creative: "Креатив"

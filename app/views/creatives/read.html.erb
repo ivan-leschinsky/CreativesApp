@@ -16,19 +16,19 @@
       <%= @creative.description %>
     </p>
     <h3><%= t('.chapters') %></h3>
-    <% @sections.each do |section| %>
-        <div class="panel">
-          <h5><%= link_to section.name, :anchor => "chapter_#{section.number+1}" %></h5>
-        </div>
-      </li>
-    <% end %>
-
+    <div data-magellan-expedition="fixed" align="center">
+      <dl class="sub-nav" style="margin-left:20%;">
+        <% @sections.each do |section| %>
+          <dd data-magellan-arrival="chapter_<%= section.number+1 %>"><%= link_to section.name, :anchor => "chapter_#{section.number+1}" %></dd>
+        <% end %>
+      </dl>
+    </div>
+    
     <% @sections.each do |section| %>
         <fieldset>
-          <legend align="center"><h3 id="chapter_<%= section.number+1 %>"><%= section.name %></h3></legend>
+        <legend align="center" data-magellan-destination="chapter_<%= section.number+1 %>"><h3 id="chapter_<%= section.number+1 %>"><%= section.name %></h3></legend>
           <p><%= markdown(section.body) %></p>
         </fieldset>
-       
     <% end %>
   </fieldset>
   <%= link_to 'Вернуться', creative_path(@creative), :class => "small button secondary" %>

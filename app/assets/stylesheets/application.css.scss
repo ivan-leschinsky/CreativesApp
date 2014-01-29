@@ -10,10 +10,11 @@
  *
 
  *= require jquery.fileupload-ui
+ *= require markdown
  *= require framework_and_overrides
  *= require_self
  */
-
+@import "jquery.fileupload-ui";
 label.right {
   padding-right: 10px;
 }
@@ -38,6 +39,14 @@ label.right {
   height: 280px;
   display: block;
 }
+
 .clearing-thumbs {
 	margin-bottom:10px;
+}
+
+.fixed-my {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  width: 40%;
 }

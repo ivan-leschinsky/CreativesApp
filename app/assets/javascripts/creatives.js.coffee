@@ -1,5 +1,5 @@
 $("#mySpinner").hide()
-$("#mySpinner").html('<img src="/assets/465.GIF"/>')
+$("#mySpinner").html "<img src=\"/assets/465.GIF\"/>"
 $("#sortable").sortable
   axis: "y"
   opacity: 0.8
@@ -15,4 +15,4 @@ $("#sortable-grid").sortable
     sortedParams = "?sorted=" + $("#sortable").sortable("toArray")
     $.post $("#sortable").attr("data-url") + sortedParams, (data) ->
       escape data
-$("#sortable-grid").disableSelection();
+$("#sortable-grid").disableSelection()

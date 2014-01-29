@@ -1,4 +1,4 @@
 $ ->
   $(document).foundation()
-
-$(".alert-box").delay(5000).fadeOut 400 
+  
+$(".alert-box").delay(4000).fadeOut 400 

@@ -25,7 +25,7 @@ class CreativesController < ApplicationController
 
   def create
     @creative = current_user.creatives.new(creative_params)
-
+    
     respond_to do |format|
       if @creative.save
         format.html { redirect_to @creative, notice: t('.created_notice') }

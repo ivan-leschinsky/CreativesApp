@@ -1,8 +1,3 @@
-/* Insert a notice between the last comment and the comment form */
-$("#comment-notice").html("<div data-alert class='alert-box round success'><%= t('.thank') %></div>");
-
-$(".alert-box").delay(3000).fadeOut(300);
-
 /* Add the new comment to the bottom of the comments list */
 $("#comments").append("<%= escape_javascript(render(@comment)) %>");
 

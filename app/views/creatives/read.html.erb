@@ -16,12 +16,19 @@
       <%= @creative.description %>
     </p>
     <h3><%= t('.chapters') %></h3>
-    <div data-magellan-expedition="fixed" align="center">
-      <dl class="sub-nav" style="margin-left:20%;">
-        <% @sections.each do |section| %>
-          <dd data-magellan-arrival="chapter_<%= section.number+1 %>"><%= link_to section.name, :anchor => "chapter_#{section.number+1}" %></dd>
-        <% end %>
-      </dl>
+    <div class="row">
+    <div class="medium-3 columns">
+    <p />
+    </div>
+      <div class="medium-9 medium-offset-3   columns">
+        <div data-magellan-expedition="fixed" align="center">
+          <dl class="sub-nav">
+            <% @sections.each do |section| %>
+              <dd data-magellan-arrival="chapter_<%= section.number+1 %>"><%= link_to section.name, :anchor => "chapter_#{section.number+1}" %></dd>
+            <% end %>
+          </dl>
+        </div>
+      </div>
     </div>
     
     <% @sections.each do |section| %>

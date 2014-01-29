@@ -17,7 +17,8 @@ class SectionsController < ApplicationController
 
   def create
     @section = Section.new(section_params)
-  
+    @section.number = @section.creative.sections.count + 1;
+
     if @section.save
       redirect_to @section.creative, notice: 'Глава успешно создана.'
     else

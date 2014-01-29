@@ -11,6 +11,7 @@ class Picture < ActiveRecord::Base
       "delete_type" => "DELETE"
     }
   end
+  
   def to_jq_download
     {
       "name" => read_attribute(:file),

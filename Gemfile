@@ -10,15 +10,14 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
 gem 'redcarpet'
-#gem 'turbolinks'
-#gem 'jquery-turbolinks'
-gem 'jbuilder', '~> 1.2'
+gem 'pagedown-rails'
 gem 'foundation-rails'
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'carrierwave'
 gem 'jquery-fileupload-rails'
+gem 'pjax_rails'
 
 group :development do
   gem 'better_errors'

@@ -34,6 +34,9 @@ ru:
     create:
       thank: "Спасибо за комментарий"
     time: "%{time_ago} назад"
+    comments:
+      comment:
+        are_you_sure: "Вы уверены?"
   creatives:
     title: "Креативы"
     index:
@@ -46,6 +49,7 @@ ru:
       back: "Вернуться к Креативам"
     show:
       no_pictures: "Нет изображений"
+      no_comments: "Нет комментариев"
       comments: "Комментарии"
       add: "Добавить комментарий"
       read: "Режим чтения"

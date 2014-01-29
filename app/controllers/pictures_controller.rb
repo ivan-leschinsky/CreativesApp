@@ -5,7 +5,7 @@ class PicturesController < ApplicationController
   # GET /pictures.json
   def index
     @creative = Creative.find(params[:creative_id])
-    @pictures = @creative.pictures.all
+    @pictures = @creative.pictures.load
     @picture = Picture.new
 
     respond_to do |format|
@@ -87,6 +87,7 @@ class PicturesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def picture_params
+      #binding.pry
       params.require(:picture).permit(:file)
     end
 end

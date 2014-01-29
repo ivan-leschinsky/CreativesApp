@@ -52,7 +52,7 @@
     <hr />
 
     <ul class="clearing-thumbs" data-clearing>
-      <% if @creative.pictures.empty?%>
+      <% if @creative.pictures.empty? %>
         <%= content_tag :h3, t('.no_pictures') %>
       <% else %>
         <% @creative.pictures.each do |pic| %>
@@ -68,10 +68,10 @@
         <%= content_tag :h2, t('.no_comments')%>
       <% else %>
         <%= content_tag :h3, t('.comments')%>
-        <div id="comments">
+      <% end %>
+      <div id="comments">
           <%= render :partial => @comments, :locals => { :list => true } %>
         </div>
-      <% end %>
     </ul>
     
     <% if current_user %>

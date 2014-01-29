@@ -12,20 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require markdown.converter
-//= require markdown.sanitizer
-//= require markdown.editor
-//= require foundation
-
 //= require jquery-fileupload
+//= require jquery-ui
+//= require foundation
 //= require app.js
 
-
 // require_tree .
-
-
-$(document).ready(function()	{
-  var converter = Markdown.getSanitizingConverter();
-	var editor = new Markdown.Editor(converter);
-	editor.run();
-});

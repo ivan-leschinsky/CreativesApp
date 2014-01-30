@@ -16,5 +16,3 @@
 //= require jquery-ui
 //= require foundation
 //= require app.js
-
-// require_tree .

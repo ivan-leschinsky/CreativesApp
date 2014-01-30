@@ -30,6 +30,9 @@ ru:
   edit: "Редактировать"
   are_you_sure: "Вы уверены?"
   back: "Назад"
+  sections:
+    edit:
+      choose_pics: "Выберите изображения"
   comments:
     create:
       thank: "Спасибо за комментарий"

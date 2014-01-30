@@ -27,7 +27,7 @@
         <% end %>
       </div>
       <div class="medium-12 columns">
-        <div id="sortable-grid" class="small-block-grid-1 medium-block-grid-2 large-block-grid-3" data-url="<%= reorder_path(@creative) %>">
+        <div id="sortable-grid" class="small-block-grid-1 medium-block-grid-2 large-block-grid-3 main" data-url="<%= reorder_path(@creative) %>">
           <% @sections.each do |section| %>
             <li id="<%= section.id %>" class="chapter-drag">
               <div class="th chapter-item">

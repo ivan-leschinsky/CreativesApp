@@ -6,3 +6,7 @@ $ ->
   $(".markdown-source").each ->
     converter = Markdown.getSanitizingConverter()
     $(this).html converter.makeHtml($(this).text())
+  $(".addbtn").click ->
+    txt = $.trim($(this).attr('value'))
+    box = $("#wmd-input")
+    box.val box.val() + txt

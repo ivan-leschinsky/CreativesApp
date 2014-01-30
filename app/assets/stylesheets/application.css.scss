@@ -31,13 +31,16 @@ label.right {
 	height:100%;
 }
 
-[class*="block-grid-"] > li {
-    height: 300px;
+[class*="block-grid-"].main > li {
+  height: 300px;
+  
 }
 
 .th.chapter-item {
   height: 280px;
   display: block;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .clearing-thumbs {

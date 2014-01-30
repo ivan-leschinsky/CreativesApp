@@ -15,7 +15,6 @@
     </h5>
 
     <%= link_to t('.read'), read_creative_path(@creative),  'data-skip-pjax' => "", :class => "medium button success round right" %>
-    
     <p>
       <%= @creative.description %>
     </p>
@@ -34,11 +33,11 @@
               <div class="th chapter-item">
               <div class="panel chapter-item">
                   <h3><%= link_to section.name, read_creative_path(@creative, :anchor => "chapter_#{section.number+1}") %></h3>
-                  <p><%= markdown(section.body) %></p>
+                  <p class="markdown-source"><%= section.body %></p>
                   <% if @creative.author?(current_user) %>
                     <ul class="button-group radius">
-                      <li><%= link_to t('.edit-s'), edit_creative_section_path(@creative, section), 'data-skip-pjax' => "", :class => "tiny button" %></li>
-                      <li><%= link_to t('.destroy-s'), creative_section_path(@creative, section), method: :delete, data: { confirm: t('are_you_sure') }, :class => "tiny button alert" %></li>
+                      <li><%= link_to t('.edit_s'), edit_creative_section_path(@creative, section), 'data-skip-pjax' => "", :class => "tiny button" %></li>
+                      <li><%= link_to t('.destroy_s'), creative_section_path(@creative, section), method: :delete, data: { confirm: t('are_you_sure') }, :class => "tiny button alert" %></li>
                     </ul>
                   <% end %>
               </div>

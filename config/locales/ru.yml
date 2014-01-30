@@ -37,6 +37,14 @@ ru:
     comments:
       comment:
         are_you_sure: "Вы уверены?"
+  pictures:
+    index:   
+      maxFileSize: 'Файл слишком велик'
+      minFileSize: 'Файл слишком мал'
+      acceptFileTypes: 'Это тип файла не разрешен'
+      maxNumberOfFiles: 'Превышено максимальное количество файлов'
+      uploadedBytes: 'Ошибка при загрузке'
+      emptyResult: 'Пустой файл'
   creatives:
     title: "Креативы"
     index:
@@ -57,8 +65,8 @@ ru:
       edit: "Редактировать креатив"
       destroy: "Удалить"
       add_section: "Добавить главу"
-      edit-s: "Редактировать главу"
-      destroy-s: "Удалить"
+      edit_s: "Редактировать главу"
+      destroy_s: "Удалить"
       addedit-pictures: "Добавить / редактировать изображения"
     reorder:
       reordered: "Порядок глав изменен"

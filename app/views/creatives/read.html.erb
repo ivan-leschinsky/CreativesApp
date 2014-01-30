@@ -34,7 +34,7 @@
     <% @sections.each do |section| %>
         <fieldset>
         <legend align="center" data-magellan-destination="chapter_<%= section.number+1 %>"><h3 id="chapter_<%= section.number+1 %>"><%= section.name %></h3></legend>
-          <p><%= markdown(section.body) %></p>
+          <p class="markdown-source"><%= section.body %></p>
         </fieldset>
     <% end %>
   </fieldset>

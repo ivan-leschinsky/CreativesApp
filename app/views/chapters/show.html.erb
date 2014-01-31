@@ -1,0 +1,22 @@
+<p>
+  <strong>Name:</strong>
+  <%= @chapter.name %>
+</p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @chapter.number %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @chapter.body %>
+</p>
+
+<p>
+  <strong>Creative:</strong>
+  <%= @chapter.creative.name %>
+</p>
+
+<%= link_to 'Edit', edit_creative_chapter_path(@chapter.creative_id, @chapter) %> |
+<%= link_to 'Back', creative_path(@chapter.creative_id) %>

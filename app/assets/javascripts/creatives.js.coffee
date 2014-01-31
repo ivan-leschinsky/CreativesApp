@@ -1,5 +1,3 @@
-$("#mySpinner").hide()
-$("#mySpinner").html "<img src=\"/assets/465.GIF\"/>"
 $("#sortable-grid").sortable
   opacity: 0.8
   update: (event, ui) ->

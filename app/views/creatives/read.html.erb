@@ -7,8 +7,8 @@
         <dd>|</dd>
         <dd data-magellan-arrival="home"><a href="#home">Наверх</a></dd>
         <dd>|</dd>
-        <% @sections.each do |section| %>
-          <dd data-magellan-arrival="chapter_<%= section.number+1 %>"><%= link_to section.name, :anchor => "chapter_#{section.number+1}" %></dd>
+        <% @chapters.each do |chapter| %>
+          <dd data-magellan-arrival="chapter_<%= chapter.number+1 %>"><%= link_to chapter.name, :anchor => "chapter_#{chapter.number+1}" %></dd>
         <% end %>
       </div>
       </div>
@@ -23,10 +23,10 @@
     <p>
       <%= t('.short_desc')%><%= @creative.description %>
     </p>
-    <% @sections.each do |section| %>
+    <% @chapters.each do |chapter| %>
       <fieldset>
-      <legend align="center" data-magellan-destination="chapter_<%= section.number+1 %>"><h3 id="chapter_<%= section.number+1 %>"><%= section.name %></h3></legend>
-        <p class="markdown-source"><%= section.body %></p>
+      <legend align="center" data-magellan-destination="chapter_<%= chapter.number+1 %>"><h3 id="chapter_<%= chapter.number+1 %>"><%= chapter.name %></h3></legend>
+        <p class="markdown-source"><%= chapter.body %></p>
       </fieldset>
     <% end %>
   </fieldset>

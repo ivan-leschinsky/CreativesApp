@@ -6,11 +6,11 @@
         <%= f.submit %>
       <% end %>
       <dl class="tabs" data-tab>
-        <dd class="active"><a href="#panel1-1"><%= t('.ret')%></a></dd>
-        <dd><a href="#panel1-2"><%= t('.crop')%></a></dd>
+        <dd class="active"><a href="#panel-ret-<%= pic.id %>"><%= t('.ret')%></a></dd>
+        <dd><a href="#panel-crop-<%= pic.id %>"><%= t('.crop')%></a></dd>
       </dl>
       <div class="tabs-content">
-        <div class="content active" id="panel1-1">
+        <div class="content active" id="panel-ret-<%= pic.id %>">
           <img
             id="example" 
             src="<%= pic.file.url %>"
@@ -49,8 +49,8 @@
             </div>
           </div>
         </div>
-        <div class="content" id="panel1-2">
-          <p>Second panel content goes here...</p>
+        <div class="content" id="panel-crop-<%= pic.id %>">
+          
         </div>
       </div>
       <a class="arcticmodal-close">Назад</a>

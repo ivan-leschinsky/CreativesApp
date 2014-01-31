@@ -4,7 +4,7 @@ Creativ::Application.routes.draw do
   #get 'tags/:tag', to: 'creatives#index', as: :tag
 
   resources :creatives do
-    resources :sections
+    resources :chapters
     resources :pictures
     resources :comments
   end

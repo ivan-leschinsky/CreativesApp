@@ -9,11 +9,11 @@ class CreativesController < ApplicationController
   def show
     @comments = @creative.comments.to_a
     @new_comment = @creative.comments.new
-    @sections = @creative.sections.order(number: :asc)
+    @chapters = @creative.chapters.order(number: :asc)
   end
 
   def read
-    @sections = @creative.sections.order(number: :asc)
+    @chapters = @creative.chapters.order(number: :asc)
   end
 
   def new
@@ -38,10 +38,10 @@ class CreativesController < ApplicationController
   end
 
   def reorder
-    section_ids = params[:sorted].split(',')
-    section_ids.each_with_index do |section_id, i|
-      section = Section.find(section_id)
-      section.update_attribute(:number, i)
+    chapter_ids = params[:sorted].split(',')
+    chapter_ids.each_with_index do |chapter_id, i|
+      chapter = Chapter.find(chapter_id)
+      chapter.update_attribute(:number, i)
     end
     render :nothing => true
   end

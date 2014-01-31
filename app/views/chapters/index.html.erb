@@ -1,0 +1,33 @@
+<h1>Главы <%= @chapters.first.creative.name%></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Number</th>
+      <th>Body</th>
+      <th>Creative</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @chapters.each do |chapter| %>
+      <tr>
+        <td><%= chapter.name %></td>
+        <td><%= chapter.number %></td>
+        <td><%= chapter.body %></td>
+        <td><%= chapter.creative_id %></td>
+        <td><%= link_to 'Show', chapter %></td>
+        <td><%= link_to 'Edit', edit_creative_chapter_path(chapter) %></td>
+        <td><%= link_to 'Destroy', chapter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New chapter', new_creative_chapter_path %>

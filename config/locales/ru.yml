@@ -30,7 +30,7 @@ ru:
   edit: "Редактировать"
   are_you_sure: "Вы уверены?"
   back: "Назад"
-  sections:
+  chapters:
     edit:
       choose_pics: "Выберите изображения"
   comments:
@@ -74,7 +74,7 @@ ru:
       please_comment: "Добавьте свой комментарий:"
       edit: "Редактировать креатив"
       destroy: "Удалить"
-      add_section: "Добавить главу"
+      add_chapter: "Добавить главу"
       edit_s: "Редактировать главу"
       destroy_s: "Удалить"
       addedit-pictures: "Добавить / редактировать изображения"

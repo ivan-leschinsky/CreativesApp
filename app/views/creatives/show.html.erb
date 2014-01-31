@@ -22,23 +22,23 @@
     <div class="row">
       <div class="medium-12 columns">
         <% if @creative.author?(current_user) %>
-          <%= link_to t('.add_section'), new_creative_section_path(@creative), 'data-skip-pjax' => "", :class => "medium-2 small button primary round"  %>
+          <%= link_to t('.add_chapter'), new_creative_chapter_path(@creative), 'data-skip-pjax' => "", :class => "medium-2 small button primary round"  %>
           <%= link_to t('.edit'), edit_creative_path(@creative), :class => "medium-2 small button alert round"  %>
         <% end %>
       </div>
       <div class="medium-12 columns">
         <div id="sortable-grid" class="small-block-grid-1 medium-block-grid-2 large-block-grid-3 main" data-url="<%= reorder_path(@creative) %>">
-          <% @sections.each do |section| %>
-            <li id="<%= section.id %>">
+          <% @chapters.each do |chapter| %>
+            <li id="<%= chapter.id %>">
               <div class="th panel chapter-item">
                   <% if @creative.author?(current_user) %>
                     <ul class="button-group radius right">
-                      <li><%= link_to t('.edit_s'), edit_creative_section_path(@creative, section), 'data-skip-pjax' => "", :class => "tiny button" %></li>
-                      <li><%= link_to t('.destroy_s'), creative_section_path(@creative, section), method: :delete, data: { confirm: t('are_you_sure') }, :class => "tiny button alert" %></li>
+                      <li><%= link_to t('.edit_s'), edit_creative_chapter_path(@creative, chapter), 'data-skip-pjax' => "", :class => "tiny button" %></li>
+                      <li><%= link_to t('.destroy_s'), creative_chapter_path(@creative, chapter), method: :delete, data: { confirm: t('are_you_sure') }, :class => "tiny button alert" %></li>
                     </ul>
                   <% end %>
-                  <h3><%= link_to section.name, read_creative_path(@creative, :anchor => "chapter_#{section.number+1}") %></h3>
-                  <p class="markdown-source"><%= section.body %></p>
+                  <h3><%= link_to chapter.name, read_creative_path(@creative, :anchor => "chapter_#{chapter.number+1}") %></h3>
+                  <p class="markdown-source"><%= chapter.body %></p>
               </div>
             </li>
           <% end %>

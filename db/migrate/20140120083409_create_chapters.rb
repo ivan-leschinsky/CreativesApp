@@ -1,6 +1,6 @@
-class CreateSections < ActiveRecord::Migration
+class CreateChapters < ActiveRecord::Migration
   def change
-    create_table :sections do |t|
+    create_table :chapters do |t|
       t.string :name
       t.integer :number
       t.text :body

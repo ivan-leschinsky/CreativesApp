@@ -3,7 +3,12 @@ class CreativesController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :index]
 
   def index
-    @creatives = Creative.all
+    if params[:tag]
+      @creatives = Creative.tagged_with(params[:tag])
+    else
+      @creatives = Creative.all
+    end
+      
   end
 
   def show
@@ -50,6 +55,7 @@ class CreativesController < ApplicationController
   # PATCH/PUT /creatives/1
   # PATCH/PUT /creatives/1.json
   def update
+    binding.pry
     respond_to do |format|
       if @creative.update(creative_params)
         format.html { redirect_to @creative, notice: 'Creative was successfully updated.' }
@@ -79,6 +85,6 @@ class CreativesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def creative_params
-      params.require(:creative).permit(:name, :description)#, :sorted)
+      params.require(:creative).permit(:name, :description, :tag_tokens)#, :sorted)
     end
 end

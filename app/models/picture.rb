@@ -2,6 +2,9 @@ class Picture < ActiveRecord::Base
   mount_uploader :file, FileUploader
   belongs_to :creative, :inverse_of => :pictures
   
+  has_many :tags, :through => :taggings
+  has_many :taggings, :as => :taggable  
+  
   def to_jq_upload
     {
       "name" => read_attribute(:file),

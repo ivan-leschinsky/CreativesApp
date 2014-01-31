@@ -1,5 +1,6 @@
 //= require jquery
 //= require shortcut
+//= require jquery.arcticmodal-0.3.min
 //= require jquery_ujs
 //= require jquery-fileupload
 //= require jquery-ui
@@ -12,3 +13,6 @@
 
 //= require markdown.js
 //= require global.js
+//= require camanjs/caman.full
+//= require camanjs-custom
+

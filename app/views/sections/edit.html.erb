@@ -25,9 +25,9 @@
           </div>
         </div>
         <div class="medium-6 columns">
-        <div class="small button addbtn" value="#Заголовок#" data-reveal-id="myModal">Вставить изображения</div>
+        <div class="small button radius addbtn" value="#Заголовок#" data-reveal-id="myModal">Вставить изображения</div>
           <p>Предпросмотр:</p>
-          <div id="wmd-preview" class="wmd-panel wmd-preview"></div>      
+          <div id="wmd-preview" class="wmd-panel wmd-preview"></div>
         </div>
       </div>
       
@@ -45,13 +45,13 @@
 </div>
 
 <div id="myModal" class="reveal-modal" data-reveal>
-  <h2><%= t('choose_pics')%></h2>
+  <h2><%= t('.choose_pics')%></h2>
   <ul class="small-block-grid-3 medium-block-grid-6 large-block-grid-8">
     <% if @section.creative.pictures.empty? %>
         <%= content_tag :h3, t('.no_pictures') %>
       <% else %>
         <% @section.creative.pictures.each do |pic| %>
-          <li><a class="th" data-skip-pjax href="<%= pic.file.url%>"><img data-caption="<%= pic.file.to_s %>" src="<%= pic.file.thumb.url %>"></a></li>
+          <li><img class ="addimagebutton th" src="<%= pic.file.thumb.url %>" url="<%= pic.file.url%>"></li>
         <% end %>
       <% end %>
   </ul>

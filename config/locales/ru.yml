@@ -48,6 +48,13 @@ ru:
       maxNumberOfFiles: 'Превышено максимальное количество файлов'
       uploadedBytes: 'Ошибка при загрузке'
       emptyResult: 'Пустой файл'
+    template_download:
+      removepic: "Удалить изображение"
+      ret: "Ретушь"
+      crop: "Кадрирование"
+      brightness: "Яркость"
+      contrast: "Контраст"
+      update_tags: "Обновить теги"
   creatives:
     title: "Креативы"
     index:
@@ -74,12 +81,13 @@ ru:
     reorder:
       reordered: "Порядок глав изменен"
     read:
-      chapters: "Главы"
+      short_desc: "Краткое описание: "
     create:
       created_notice: "Креатив успешно создан"
   activerecord:
     models:
       creative: "Креатив"
+      picture: "Изображение"
       user: "Учетная запись"
       userr: "учетную запись"
     attributes:

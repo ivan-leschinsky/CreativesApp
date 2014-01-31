@@ -29,18 +29,16 @@
       <div class="medium-12 columns">
         <div id="sortable-grid" class="small-block-grid-1 medium-block-grid-2 large-block-grid-3 main" data-url="<%= reorder_path(@creative) %>">
           <% @sections.each do |section| %>
-            <li id="<%= section.id %>" class="chapter-drag">
-              <div class="th chapter-item">
-              <div class="panel chapter-item">
-                  <h3><%= link_to section.name, read_creative_path(@creative, :anchor => "chapter_#{section.number+1}") %></h3>
-                  <p class="markdown-source"><%= section.body %></p>
+            <li id="<%= section.id %>">
+              <div class="th panel chapter-item">
                   <% if @creative.author?(current_user) %>
-                    <ul class="button-group radius">
+                    <ul class="button-group radius right">
                       <li><%= link_to t('.edit_s'), edit_creative_section_path(@creative, section), 'data-skip-pjax' => "", :class => "tiny button" %></li>
                       <li><%= link_to t('.destroy_s'), creative_section_path(@creative, section), method: :delete, data: { confirm: t('are_you_sure') }, :class => "tiny button alert" %></li>
                     </ul>
                   <% end %>
-              </div>
+                  <h3><%= link_to section.name, read_creative_path(@creative, :anchor => "chapter_#{section.number+1}") %></h3>
+                  <p class="markdown-source"><%= section.body %></p>
               </div>
             </li>
           <% end %>
@@ -74,13 +72,13 @@
     </ul>
     
     <% if current_user %>
-      <fieldset class="medium-6 columns">
+      <div class="medium-6 columns">
         <h5><%= t('.please_comment') %></h5>
           <%= form_for @new_comment, :url => creative_comments_path(@creative), remote: true do |f| %>
               <%= f.text_area :body, :rows => 8, :required => true%><br />
               <button type="submit" class="tiny button success radius"><%= t('.add') %></button>
           <% end %>
-      </fieldset>
+      </div>
       <div id="comment-notice"></div>
     <% end %>
     

@@ -1,0 +1,32 @@
+<%= form_for(@picture, :url => creative_picture_path) do |f| %>
+
+  <div class="row">
+    
+  <div class="row">
+    <div class="small-3 columns">
+      <%= f.label :file, class: "right inline", title: "имя файла", data: {tooltip: true } %>
+</div>
+
+<div class="small-9 columns">
+  <%= f.text_area :file %>
+</div>
+  
+    
+  </div>
+    <div class="row">
+    <div class="small-3 columns">
+      тут поле к тегам
+</div>
+
+<div class="small-9 columns">
+  тут поле для тегов
+</div>
+  
+    
+  </div>
+ <div class="row">
+  <div class="small-9 small-offset-3 columns">
+    <%= f.submit %>
+  </div>
+</div>
+<% end %>

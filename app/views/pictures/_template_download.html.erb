@@ -1,26 +1,86 @@
+<% @pictures.each do |pic| %>
+  <div style="display: none;">
+    <div class="box-modal" id="tagsModal_<%= pic.id %>">
+     <%= form_for(pic, :url => creative_picture_path(pic.creative, pic)) do |f| %>
+        <%= f.text_field :file %>
+        <%= f.submit %>
+      <% end %>
+      <dl class="tabs" data-tab>
+        <dd class="active"><a href="#panel1-1"><%= t('.ret')%></a></dd>
+        <dd><a href="#panel1-2"><%= t('.crop')%></a></dd>
+      </dl>
+      <div class="tabs-content">
+        <div class="content active" id="panel1-1">
+          <img
+            id="example" 
+            src="<%= pic.file.url %>"
+            data-caman-hidpi="<%= pic.file.url %>"
+            >
+          <div id="Filters">
+            <div class="Filter">
+              <div class="FilterName">
+                <p><%= t('.brightness')%></p>
+              </div>
+              <div class="FilterSetting">
+                <input
+                  type="range" 
+                  min="-100"
+                  max="100"
+                  step="1"
+                  value="0"
+                  data-filter="brightness">
+                <span class="FilterValue">0</span>
+              </div>
+            </div>
+            <div class="Filter">
+              <div class="FilterName">
+                <p><%= t('.contrast')%></p>
+              </div>
+              <div class="FilterSetting">
+                <input
+                  type="range" 
+                  min="-100"
+                  max="100"
+                  step="1"
+                  value="0"
+                  data-filter="contrast" >
+                <span class="FilterValue">0</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="content" id="panel1-2">
+          <p>Second panel content goes here...</p>
+        </div>
+      </div>
+      <a class="arcticmodal-close">Назад</a>
+    </div>
+  </div>
+<% end %>
+
 <script id="template-download" type="text/x-tmpl">
+
   {% for (var i=0, file; file=o.files[i]; i++) { %}
-    <tr class="template-download fade">
+      <li class="template-download" style="text-align:center;">
       {% if (file.error) { %}
-        <td></td>
-        <td class="name"><span>{%=file.name%}</span></td>
-        <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
-        <td class="error" colspan="2"><span class="label label-important">{%=locale.fileupload.error%}</span> {%=locale.fileupload.errors[file.error] || file.error%}</td>
+        <p class="name"><span>{%=file.name%}</span></p>
+        <p class="size"><span>{%=o.formatFileSize(file.size)%}</span></p>
+        <p class="error" colspan="2"><span class="label alert">{%=locale.fileupload.error%}</span> {%=locale.fileupload.errors[file.error] || file.error%}</p>
         {% } else { %}
-        <td class="preview">{% if (file.thumbnail_url) { %}
-          <a href="{%=file.url%}" title="{%=file.name%}" rel="gallery" download="{%=file.name%}"><img src="{%=file.thumbnail_url%}"></a>
-          {% } %}</td>
-        <td class="name">
-          <a href="{%=file.url%}" title="{%=file.name%}" rel="{%=file.thumbnail_url&&'gallery'%}" download="{%=file.name%}">{%=file.name%}</a>
-        </td>
-        <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
-        <td colspan="2"></td>
-        {% } %}
-      <td class="delete">
-        <button class="btn btn-danger" data-type="{%=file.delete_type%}" data-url="{%=file.delete_url%}">
-          <span>{%=locale.fileupload.destroy%}</span>
-        </button>
-      </td>
-    </tr>
+        <p class="preview">
+          {% if (file.thumbnail_url) { %}
+          <img id="pic{%=file.id%}" class="th" onclick="$('#tagsModal_{%=file.id%}').arcticmodal()" src="{%=file.thumbnail_url%}">
+          {% } %}
+        </p>
+        <p class="delete">
+          <button class="tiny secondary" data-type="{%=file.delete_type%}" data-url="{%=file.delete_url%}" data-confirm="<%= t('are_you_sure')%>" >
+            <%= t('.removepic')%>
+          </button>
+        </p>
+       {% } %}
+    </li>
+
     {% } %}
 </script>
+
+

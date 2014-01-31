@@ -60,7 +60,7 @@ class PicturesController < ApplicationController
   def update
     respond_to do |format|
       if @picture.update(picture_params)
-        format.html { redirect_to @picture, notice: 'Picture was successfully updated.' }
+        format.html { redirect_to creative_pictures_path(@picture.creative), notice: 'Picture was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

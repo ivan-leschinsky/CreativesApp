@@ -43,6 +43,7 @@ class CreativesController < ApplicationController
       section = Section.find(section_id)
       section.update_attribute(:number, i)
     end
+    render :nothing => true
   end
 
 

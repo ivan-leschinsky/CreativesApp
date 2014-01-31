@@ -14,12 +14,15 @@ class Picture < ActiveRecord::Base
   
   def to_jq_download
     {
+      "id" => id,
       "name" => read_attribute(:file),
       "size" => file.size,
       "url" => file.url,
       "thumbnail_url" => file.thumb.url,
+      "edit_url" => "/creatives/#{creative_id}/pictures/#{id}/edit",
       "delete_url" => "/creatives/#{creative_id}/pictures/#{id}",
       "delete_type" => "DELETE"
+
     }
   end
 end

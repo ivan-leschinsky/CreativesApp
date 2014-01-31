@@ -1,41 +1,32 @@
+<div id="home"></div>
+  <div data-magellan-expedition="fixed" align="center">
+    <dl class="sub-nav">
+    <div class="row">
+      <div class="large-9 large-centered medium-12 medium-centered column">
+        <dd><%= link_to 'Вернуться к креативу', creative_path(@creative), :class => "left" %></dd>
+        <dd>|</dd>
+        <dd data-magellan-arrival="home"><a href="#home">Наверх</a></dd>
+        <dd>|</dd>
+        <% @sections.each do |section| %>
+          <dd data-magellan-arrival="chapter_<%= section.number+1 %>"><%= link_to section.name, :anchor => "chapter_#{section.number+1}" %></dd>
+        <% end %>
+      </div>
+      </div>
+    </dl>
+</div>
   <fieldset>
     <legend align="center">
       <h2>
         <%= @creative.name %>
       </h2>
     </legend>
-    <h5>Автор:
-      <span class="alert label radius"><%= link_to @creative.user.user_name, @creative.user %></span>
-      Теги:
-      <span class="label radius">Программирование</span>
-      <span class="success label radius">Еще что-то</span>
-      <span class="label radius">И еще...</span>
-    </h5>
-
     <p>
-      <%= @creative.description %>
+      <%= t('.short_desc')%><%= @creative.description %>
     </p>
-    <h3><%= t('.chapters') %></h3>
-    <div class="row">
-    <div class="medium-3 columns">
-    <p />
-    </div>
-      <div class="medium-9 medium-offset-3   columns">
-        <div data-magellan-expedition="fixed" align="center">
-          <dl class="sub-nav">
-            <% @sections.each do |section| %>
-              <dd data-magellan-arrival="chapter_<%= section.number+1 %>"><%= link_to section.name, :anchor => "chapter_#{section.number+1}" %></dd>
-            <% end %>
-          </dl>
-        </div>
-      </div>
-    </div>
-    
     <% @sections.each do |section| %>
-        <fieldset>
-        <legend align="center" data-magellan-destination="chapter_<%= section.number+1 %>"><h3 id="chapter_<%= section.number+1 %>"><%= section.name %></h3></legend>
-          <p class="markdown-source"><%= section.body %></p>
-        </fieldset>
+      <fieldset>
+      <legend align="center" data-magellan-destination="chapter_<%= section.number+1 %>"><h3 id="chapter_<%= section.number+1 %>"><%= section.name %></h3></legend>
+        <p class="markdown-source"><%= section.body %></p>
+      </fieldset>
     <% end %>
   </fieldset>
-  <%= link_to 'Вернуться', creative_path(@creative), :class => "small button secondary" %>

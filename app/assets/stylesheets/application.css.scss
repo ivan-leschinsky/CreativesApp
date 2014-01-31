@@ -13,14 +13,11 @@
  *= require markdown
  *= require framework_and_overrides
  *= require_self
+ *= require jquery.arcticmodal-0.3
  */
 
 label.right {
   padding-right: 10px;
-}
-
-.main-row {
-	max-width:1500px !important;
 }
 
 .chapter-drag {
@@ -52,4 +49,59 @@ label.right {
   bottom: 50px;
   right: 50px;
   width: 40%;
+}
+
+.box-modal {
+	position: relative;
+	width: auto;
+	padding: 16px;
+	background: #fff;
+	box-shadow: 0 0 0 6px rgba(153, 153, 153, .3);
+	border-radius: 6px;
+}
+.box-modal_close { position: absolute; right: 10px; top: 6px; font-size: 11px; line-height: 15px; color: #999; cursor: pointer; }
+.box-modal_close:hover { color: #666; }
+
+.FilterSetting input{
+	width:100%;
+}
+
+
+
+@media only screen and (max-width: 640px) {
+	.main-row {
+		max-width:600px !important;
+	}
+}
+
+// Medium screens
+@media only screen and (max-width: 800px) {
+	.main-row {
+		max-width:750px !important;
+	}
+}
+@media only screen and (max-width: 1022px) {
+	.main-row {
+		max-width:920px !important;
+	}
+}
+
+// Large screens
+@media only screen and (min-width: 1023px) {
+	.main-row {
+		max-width:950px !important;
+	}
+}
+
+@media only screen and (min-width: 1279px) {
+	.main-row {
+		max-width:1200px !important;
+	}
+}
+
+
+@media only screen and (min-width: 1440px) {
+	.main-row {
+		max-width:1400px !important;
+	}
 }

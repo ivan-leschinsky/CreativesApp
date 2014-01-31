@@ -10,3 +10,6 @@ $ ->
     txt = $.trim($(this).attr('url'))
     box = $(".wmd-input")
     box.val box.val() + "![](#{txt})"
+    $('#choosePicModal').foundation('reveal', 'close');
+    converter = Markdown.getSanitizingConverter()
+    $("#wmd-preview").html converter.makeHtml($(".wmd-input").val())

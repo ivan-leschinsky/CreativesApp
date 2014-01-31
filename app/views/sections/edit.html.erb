@@ -1,5 +1,5 @@
 <div class="row chapter">
-  <h1>Редактирование главы</h1>
+  <h1><%= link_to t('back'), creative_path(@section.creative), :class => "button secondary round" %> Редактирование главы</h1>
   <fieldset>
   <%= form_for @section, url: creative_section_path(@section.creative, @section) do |f| %>
     <% if @section.errors.any? %>
@@ -25,7 +25,7 @@
           </div>
         </div>
         <div class="medium-6 columns">
-        <div class="small button radius addbtn" value="#Заголовок#" data-reveal-id="myModal">Вставить изображения</div>
+        <div class="small button radius addbtn" value="#Заголовок#" data-reveal-id="choosePicModal">Вставить изображения</div>
           <p>Предпросмотр:</p>
           <div id="wmd-preview" class="wmd-panel wmd-preview"></div>
         </div>
@@ -41,10 +41,9 @@
     <% end %>
 
   </fieldset>
-  <%= link_to t('back'), creative_path(@section.creative), :class => "tiny button secondary" %>
 </div>
 
-<div id="myModal" class="reveal-modal" data-reveal>
+<div id="choosePicModal" class="reveal-modal" data-reveal>
   <h2><%= t('.choose_pics')%></h2>
   <ul class="small-block-grid-3 medium-block-grid-6 large-block-grid-8">
     <% if @section.creative.pictures.empty? %>

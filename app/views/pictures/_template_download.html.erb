@@ -1,3 +1,6 @@
+<script src="/js/jquery.Jcrop.min.js"></script>
+<link rel="stylesheet" href="/css/jquery.Jcrop.min.css" type="text/css" />
+
 <% @pictures.each do |pic| %>
   <div style="display: none;">
     <div class="box-modal" id="tagsModal_<%= pic.id %>">
@@ -6,11 +9,11 @@
         <%= f.submit %>
       <% end %>
       <dl class="tabs" data-tab>
-        <dd class="active"><a href="#panel-ret-<%= pic.id %>"><%= t('.ret')%></a></dd>
-        <dd><a href="#panel-crop-<%= pic.id %>"><%= t('.crop')%></a></dd>
+        <dd><a href="#panel-ret-<%= pic.id %>"><%= t('.ret')%></a></dd>
+        <dd class="active"><a href="#panel-crop-<%= pic.id %>"><%= t('.crop')%></a></dd>
       </dl>
       <div class="tabs-content">
-        <div class="content active" id="panel-ret-<%= pic.id %>">
+        <div class="content" id="panel-ret-<%= pic.id %>">
           <img
             id="example" 
             src="<%= pic.file.url %>"
@@ -49,8 +52,13 @@
             </div>
           </div>
         </div>
-        <div class="content" id="panel-crop-<%= pic.id %>">
-          
+        <div class="content active" id="panel-crop-<%= pic.id %>">
+          <%= image_tag(pic.file.url, :id => "target-#{pic.id}") %>
+         <script type="text/javascript">
+          jQuery(function($){
+            $('#target-<%= pic.id %>').Jcrop();
+          });
+        </script>
         </div>
       </div>
       <a class="arcticmodal-close">Назад</a>

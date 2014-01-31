@@ -7,12 +7,13 @@
 //= require markdown.converter
 //= require markdown.sanitizer
 //= require markdown.editor
+//= require markdown.js
 //= require foundation
+
 //= require pictures
 //= require read
 
-//= require markdown.js
-//= require global.js
+//= require global
 //= require camanjs/caman.full
 //= require camanjs-custom
 

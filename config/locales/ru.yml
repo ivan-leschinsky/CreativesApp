@@ -32,6 +32,7 @@ ru:
   back: "Назад"
   chapters:
     edit:
+    modal_pictures:
       choose_pics: "Выберите изображения"
   comments:
     create:

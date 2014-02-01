@@ -3,12 +3,7 @@ class CreativesController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :index]
 
   def index
-    if params[:tag]
-      @creatives = Creative.tagged_with(params[:tag])
-    else
-      @creatives = Creative.all
-    end
-      
+    @creatives = Creative.all
   end
 
   def show

@@ -4,14 +4,14 @@ class Picture < ActiveRecord::Base
   
   has_many :tags, :through => :taggings
   has_many :taggings, :as => :taggable  
-  attr_reader :tag_tokens
+  attr_reader :tag_tokens, :cropped_url
 
   def tag_tokens=(ids)
     self.tag_ids = Tag.ids_from_tokens(ids)
   end
 
-  def self.tagged_with(name)
-    Tag.find_by_name!(name).pictures
+  def cropped_url
+    self.file.url + ".cropped.jpg"
   end
 
   def to_jq_upload

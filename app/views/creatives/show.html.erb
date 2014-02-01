@@ -53,7 +53,7 @@
         <%= content_tag :h3, t('.no_pictures') %>
       <% else %>
         <% @creative.pictures.each do |pic| %>
-          <li><a class="th" data-skip-pjax href="<%= pic.file.url%>"><img data-caption="<%= pic.file.to_s %>" src="<%= pic.file.thumb.url %>"></a></li>
+          <li><a class="th" href="<%= pic.file.url%>"><img src="<%= pic.file.thumb.url %>"></a></li>
         <% end %>
       <% end %>
     </ul>

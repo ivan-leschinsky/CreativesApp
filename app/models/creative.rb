@@ -19,18 +19,5 @@ class Creative < ActiveRecord::Base
 		self.tag_ids = Tag.ids_from_tokens(ids)
   end
 
-
-	#pREVIOUS tAGS, WORKING
-
-  #For search
-  def self.tagged_with(name)
-	  Tag.find_by_name!(name).creatives
-	end
-
-	def self.tag_counts
-	  Tag.select("tags.*, count(taggings.tag_id) as count").
-	    joins(:taggings).group("taggings.tag_id")
-	end
-
 	
 end

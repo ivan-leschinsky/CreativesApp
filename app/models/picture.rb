@@ -4,12 +4,22 @@ class Picture < ActiveRecord::Base
   
   has_many :tags, :through => :taggings
   has_many :taggings, :as => :taggable  
-  
+  attr_reader :tag_tokens
+
+  def tag_tokens=(ids)
+    self.tag_ids = Tag.ids_from_tokens(ids)
+  end
+
+  def self.tagged_with(name)
+    Tag.find_by_name!(name).pictures
+  end
+
   def to_jq_upload
     {
       "name" => read_attribute(:file),
       "size" => file.size,
       "url" => file.url,
+      "edit_url" => "/creatives/#{creative_id}/pictures/#{id}/edit",
       "delete_url" => "/creatives/#{creative_id}/pictures/#{id}",
       "delete_type" => "DELETE"
     }

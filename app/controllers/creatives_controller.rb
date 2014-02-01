@@ -55,7 +55,6 @@ class CreativesController < ApplicationController
   # PATCH/PUT /creatives/1
   # PATCH/PUT /creatives/1.json
   def update
-    binding.pry
     respond_to do |format|
       if @creative.update(creative_params)
         format.html { redirect_to @creative, notice: 'Creative was successfully updated.' }

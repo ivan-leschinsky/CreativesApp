@@ -1,32 +1,40 @@
-<%= form_for(@picture, :url => creative_picture_path) do |f| %>
-
-  <div class="row">
-    
-  <div class="row">
-    <div class="small-3 columns">
-      <%= f.label :file, class: "right inline", title: "имя файла", data: {tooltip: true } %>
-</div>
-
-<div class="small-9 columns">
-  <%= f.text_area :file %>
-</div>
-  
-    
+<%= javascript_include_tag "/js/jquery.Jcrop.min.js" %>
+<%= stylesheet_link_tag "/css/jquery.Jcrop.min.css" %>
+<fieldset>
+<legend><%= t('.title')%></legend>
+  <%= form_for(@picture, :url => creative_picture_path(@picture.creative, @picture), :remote => true) do |f| %>
+  <%= f.text_field :tag_tokens, "data-pre" => @picture.tags.map(&:attributes).to_json %> 
+      <input class="button radius" type='submit' value="Сохранить"/>
+  <% end %>
+  <dl class="tabs" data-tab>
+    <dd><a href="#panel-ret-<%= @picture.id %>"><%= t('.ret')%></a></dd>
+    <dd class="active"><a href="#panel-crop-<%= @picture.id %>"><%= t('.crop')%></a></dd>
+  </dl>
+  <div class="tabs-content">
+    <div class="content" id="panel-ret-<%= @picture.id %>">
+      <%= render "ret" %>
+    </div>
+    <div class="content active" id="panel-crop-<%= @picture.id %>">
+      <div id="pic_container_<%= @picture.id %>">
+        <%= @picture.cropped ? (image_tag(@picture.file.url+".cropped.jpg", :id => "target-#{@picture.id}")) : (image_tag(@picture.file.url, :id => "target-#{@picture.id}")) %>
+      </div>
+      <script type="text/javascript">
+          jQuery(function($){
+            var updatevalues;
+            updatevalues = function(c) {
+						  var par;
+						  par = "?x=" + c.x + "&y=" + c.y + "&w=" + c.w + "&h=" + c.h;
+						  //alert(par);
+						  $("#croppic").attr('data-params',par);
+						};
+						$('#target-<%= @picture.id %>').Jcrop({
+				      onChange:   updatevalues
+				    });
+          });
+      </script>
+      <button id="croppic" data-url="<%= crop_picture_path(@picture.creative, @picture) %>" data-original="true" data-id="<%= @picture.id %>" data-params="">Кадрировать</button>
+      <button id="change_source_to_crop" data-url="<%= @picture.file.url+'.cropped.jpg' %>" data-original="false" data-id="<%= @picture.id %>">Показать кадрированное</button>
+      <button id="change_source_to_original" data-url="<%= @picture.file.url %>" data-original="true" data-id="<%= @picture.id %>">Показать оригинал</button>
+    </div>
   </div>
-    <div class="row">
-    <div class="small-3 columns">
-      тут поле к тегам
-</div>
-
-<div class="small-9 columns">
-  тут поле для тегов
-</div>
-  
-    
-  </div>
- <div class="row">
-  <div class="small-9 small-offset-3 columns">
-    <%= f.submit %>
-  </div>
-</div>
-<% end %>
+</fieldset>

@@ -9,9 +9,9 @@
     <h5>Автор:
       <span class="alert label radius"><%= link_to @creative.user.user_name, @creative.user %></span>
       Теги:
-      <span class="label radius">Программирование</span>
-      <span class="success label radius">Еще что-то</span>
-      <span class="label radius">И еще...</span>
+      <% @creative.tags.each do |tag| %>
+        <span class="label radius"><%= tag%></span>
+      <% end %>
     </h5>
 
     <%= link_to t('.read'), read_creative_path(@creative),  'data-skip-pjax' => "", :class => "medium button success round right" %>

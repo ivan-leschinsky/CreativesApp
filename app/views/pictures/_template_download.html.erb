@@ -1,75 +1,7 @@
-<script src="/js/jquery.Jcrop.min.js"></script>
-<link rel="stylesheet" href="/css/jquery.Jcrop.min.css" type="text/css" />
-
-<% @pictures.each do |pic| %>
-  <div style="display: none;">
-    <div class="box-modal" id="tagsModal_<%= pic.id %>">
-     <%= form_for(pic, :url => creative_picture_path(pic.creative, pic)) do |f| %>
-        <%= f.text_field :file %>
-        <%= f.submit %>
-      <% end %>
-      <dl class="tabs" data-tab>
-        <dd><a href="#panel-ret-<%= pic.id %>"><%= t('.ret')%></a></dd>
-        <dd class="active"><a href="#panel-crop-<%= pic.id %>"><%= t('.crop')%></a></dd>
-      </dl>
-      <div class="tabs-content">
-        <div class="content" id="panel-ret-<%= pic.id %>">
-          <img
-            id="example" 
-            src="<%= pic.file.url %>"
-            data-caman-hidpi="<%= pic.file.url %>"
-            >
-          <div id="Filters">
-            <div class="Filter">
-              <div class="FilterName">
-                <p><%= t('.brightness')%></p>
-              </div>
-              <div class="FilterSetting">
-                <input
-                  type="range" 
-                  min="-100"
-                  max="100"
-                  step="1"
-                  value="0"
-                  data-filter="brightness">
-                <span class="FilterValue">0</span>
-              </div>
-            </div>
-            <div class="Filter">
-              <div class="FilterName">
-                <p><%= t('.contrast')%></p>
-              </div>
-              <div class="FilterSetting">
-                <input
-                  type="range" 
-                  min="-100"
-                  max="100"
-                  step="1"
-                  value="0"
-                  data-filter="contrast" >
-                <span class="FilterValue">0</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="content active" id="panel-crop-<%= pic.id %>">
-          <%= image_tag(pic.file.url, :id => "target-#{pic.id}") %>
-         <script type="text/javascript">
-          jQuery(function($){
-            $('#target-<%= pic.id %>').Jcrop();
-          });
-        </script>
-        </div>
-      </div>
-      <a class="arcticmodal-close">Назад</a>
-    </div>
-  </div>
-<% end %>
-
 <script id="template-download" type="text/x-tmpl">
 
   {% for (var i=0, file; file=o.files[i]; i++) { %}
-      <li class="template-download" style="text-align:center;">
+    <li class="template-download" style="text-align:center;">
       {% if (file.error) { %}
         <p class="name"><span>{%=file.name%}</span></p>
         <p class="size"><span>{%=o.formatFileSize(file.size)%}</span></p>
@@ -77,7 +9,8 @@
         {% } else { %}
         <p class="preview">
           {% if (file.thumbnail_url) { %}
-          <img id="pic{%=file.id%}" class="th" onclick="$('#tagsModal_{%=file.id%}').arcticmodal()" src="{%=file.thumbnail_url%}">
+          <a href="{%=file.edit_url%}">
+          <img class="th" src="{%=file.thumbnail_url%}"></a>
           {% } %}
         </p>
         <p class="delete">
@@ -87,8 +20,5 @@
         </p>
        {% } %}
     </li>
-
-    {% } %}
+  {% } %}
 </script>
-
-

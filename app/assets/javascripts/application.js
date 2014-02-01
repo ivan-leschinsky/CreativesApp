@@ -16,8 +16,11 @@
 
 //= require global
 //= require camanjs/caman.full
-//= require camanjs-custom
 
 $(function () {
-  $('#creative_tags_tokens').tokenInput('/tags.json', { crossDomain: false, prePopulate: $('#creative_tags_tokens').data('pre'), theme: 'facebook' });
+  $("#creative_tag_tokens,#picture_tag_tokens").tokenInput("/tags", {
+    theme: "facebook",
+    crossDomain: false,
+    prePopulate: $(this).data("pre")
+  });
 });

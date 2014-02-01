@@ -26,7 +26,5 @@ group :development do
   gem 'pry'
 end
 
-#new
-gem 'acts-as-taggable-on'
 gem 'rmagick'
 gem 'camanjs-rails', git: 'git@github.com:ksz2k/camanjs-rails.git'

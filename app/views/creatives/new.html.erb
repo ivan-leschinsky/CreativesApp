@@ -15,14 +15,15 @@
 
   <div class="row">
     <div class="small-3 columns">
-    <%= f.label :name, class: "right inline", title: "Name for Creative", data: {tooltip: true } %></div>
-  <div class="small-9 columns">
-    <%= f.text_field :name %>
-  </div>
+      <%= f.label :name, class: "right inline"%>
+    </div>
+    <div class="small-9 columns">
+      <%= f.text_field :name %>
+    </div>
   </div>
   <div class="row">
     <div class="small-3 columns">
-      <%= f.label :description, class: "right inline", title: "Short description for Creative", data: {tooltip: true } %>
+      <%= f.label :description, class: "right inline"%>
     </div>
     <div class="small-9 columns">
       <%= f.text_area :description %>
@@ -30,12 +31,11 @@
   </div>
   <div class="row">
     <div class="small-3 columns">
-      <%= f.label :tag_list, title: "Tags (separated by commas)", data: {tooltip: true }, class: "right inline"  %><br />
+      <label class="right inline"><%= t('tags')%></label>
     </div>
     <div class="small-9 columns">
-      <%= f.text_field :tag_list %>
+      <%= f.text_field :tag_tokens %> 
     </div>
-  </div>
   <div class="row">
     <div class="small-9 small-offset-3 columns">
       <button type="submit" class="tiny button success radius"><%= t('.create')%></button>

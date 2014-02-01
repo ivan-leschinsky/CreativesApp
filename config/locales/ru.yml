@@ -30,6 +30,8 @@ ru:
   edit: "Редактировать"
   are_you_sure: "Вы уверены?"
   back: "Назад"
+  tags: "Теги"
+  newtag: "Новый"
   chapters:
     edit:
     modal_pictures:
@@ -51,6 +53,8 @@ ru:
       emptyResult: 'Пустой файл'
     template_download:
       removepic: "Удалить изображение"
+    edit:
+      title: "Редактировать изображение"
       ret: "Ретушь"
       crop: "Кадрирование"
       brightness: "Яркость"

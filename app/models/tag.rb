@@ -5,13 +5,11 @@ class Tag < ActiveRecord::Base
 
 	has_many :taggings, :dependent => :destroy
 
-  # Wraps new tokens to simplify their in Tag base
   def self.tokens(query)
     tags = where("name like ?", "%#{query}%")
-    tags.empty? ? [{id: "<<<#{query}>>>", name: "Новый: \"#{query}\""}] : tags
+    tags.empty? ? [{id: "<<<#{query}>>>", name: "New: \"#{query}\""}] : tags
   end
 
-  # Adds wrapped tags in Tag base
   def self.ids_from_tokens(tokens)
     (tokens.gsub(/<<<(.+?)>>>/) { create!(name: $1).id} || tokens).split(',')
   end

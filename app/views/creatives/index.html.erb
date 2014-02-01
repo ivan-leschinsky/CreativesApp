@@ -7,22 +7,20 @@
   <h1 align="center">Все креативы</h1>
   </div>
 
-  <div id="tag_cloud">
-  Облако тегов:
-	  <% tag_cloud Creative.tag_counts, %w[s m l] do |tag, css_class| %>
-	    <%= link_to tag.name, creatives_by_tags_path(tag.name), class: css_class %>
-	  <% end %>
-	</div>
-	
+  
   <% @creatives.each do |creative| %>
     <div class="medium-6 columns">
       <div class="panel">      
         <h3>
           "<%= link_to creative.name, creative %>"
         </h3>
-        Tags: <%= raw creative.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %>
-        <%= creative.description %><br/>
-              <p><%= creative.chapters.size %> глав</p>
+        Теги:
+        <% creative.tags.each do |tag| %>
+          <span class="label radius"><%= tag%></span>
+        <% end %>
+        <br/>
+        <%= creative.description %>
+          <p><%= creative.chapters.size %> глав</p>
         <ul class="button-group radius">
           <li><%= link_to t('.show'), creative, class: "small button success"%></li>
           <%= link_to t('.read'), read_creative_path(creative, :anchor => "chapter_last"),:class => "small button success" %>

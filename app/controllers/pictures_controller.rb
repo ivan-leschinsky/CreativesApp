@@ -1,7 +1,9 @@
 require 'RMagick'
+require 'base64'
+
 include Magick
 class PicturesController < ApplicationController
-  before_action :set_picture, only: [:show, :edit, :update, :destroy, :crop]
+  before_action :set_picture, only: [:show, :edit, :update, :destroy, :crop, :retouch]
 
   # GET /pictures
   # GET /pictures.json
@@ -71,11 +73,14 @@ class PicturesController < ApplicationController
   end
 
   def retouch
-    bytes = ActiveSupport::Base64.decode64(picture_params_without_picture[:image])
-    img   = Image.from_blob(bytes).first
-    target = Dir.pwd+"/public"+@picture.cropped_url
+    bytes = picture_params_without_picture[:image]
+    target = "#{Rails.root}/public"+@picture.cropped_url
     @picture.update_attribute(:cropped, true)
-    img.write(target)
+    image_data = Base64.decode64(bytes)
+    
+    File.open(target, 'wb') do |f|
+      f.write image_data
+    end
   end
 
   # PATCH/PUT /pictures/1
@@ -107,7 +112,6 @@ class PicturesController < ApplicationController
     def set_picture
       @picture = Picture.find(params[:id])
     end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def picture_params
       #binding.pry

@@ -19,6 +19,8 @@
     </div>
   </div>
 </div>
-<button id="retouchpic" data-url="<%= retouch_picture_path(@picture.creative, @picture) %>" data-original="<%= !@picture.cropped %>" data-id="<%= @picture.id %>" data-params="">Ретушировать</button>
-
+  <button id="retouchpic">Ретушировать</button>
+  <%= form_for(@picture, :url => retouch_picture_path(@picture.creative, @picture), :remote => true) do |f| %>
+    <input name="image" type="hidden" id="image" value=""/>
+  <% end %>
 <%= javascript_include_tag "camanjs-custom" %>
